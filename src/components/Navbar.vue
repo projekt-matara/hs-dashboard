@@ -9,7 +9,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 					i(class="material-icons", role="presentation") arrow_drop_down
 					span.visuallyhidden Accounts
 				ul(class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect", for="accbtn")
-					li.mdl-menu__item.logout Logout
+					li(class="mdl-menu__item logout", @click="logout()") Logout
 		nav(class="demo-navigation mdl-navigation mdl-color--blue-grey-800")
 			a.mdl-navigation__link(href="#", v-link="{name: 'home'}")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") home 
@@ -26,6 +26,9 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 			a.mdl-navigation__link(href="#", v-link="{name: 'learn'}")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") school
 				| Learn
+			a.mdl-navigation__link(href="#", @click="login('stop', $event)", v-show="!authenticated")
+					i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") home 
+					| Login
 			.mdl-layout-spacer
 			a.mdl-navigation__link(href="#")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") help_outline
@@ -34,9 +37,38 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 
 <script>
 export default {
+	methods: {
+		login (msg, e) {
+			e.stopPropagation()
+			const self = this
+			const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
+
+			lock.show((err, profile, token) => {
+        if (err) {
+          // Handle the error
+          console.log(err)
+        } else {
+          // Set the token and user profile in local storage
+          localStorage.setItem('profile', JSON.stringify(profile))
+          localStorage.setItem('id_token', token)
+          self.authenticated = true
+        }
+      })
+		},
+
+		logout () {
+			const self = this
+			localStorage.removeItem('id_token')
+			localStorage.removeItem('profile')
+			self.authenticated = false
+		}
+	},
+
+	ready () {
+    this.$nextTick(() => {
+      componentHandler.upgradeDom()
+      componentHandler.upgradeAllRegistered()
+    })
+  }
 }
 </script>
-
-<style lang="stylus">
-@import '../main.styl'
-</style>
