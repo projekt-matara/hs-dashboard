@@ -1,0 +1,772 @@
+/*
+	COLORS
+*/
+
+lesscss-percentage(n)
+  (n * 100)%
+deep_orange = rgb(255, 87, 34, 1)
+deep_orange_700 = rgb(230, 74, 25, 1)
+deep_orange_800 = rgb(216, 67, 21, 1)
+deep_orange_900 = rgb(191, 54, 12, 1)
+gray = rgb(158, 158, 158, 1)
+gray_50 = rgb(250, 250, 250, 1)
+gray_100 = rgb(245, 245, 245, 1)
+gray_200 = rgb(238, 238, 238, 1)
+gray_300 = rgb(224, 224, 224, 1)
+gray_400 = rgb(189, 189, 189, 1)
+gray_500 = rgb(158, 158, 158, 1)
+gray_600 = rgb(117, 117, 117, 1)
+gray_700 = rgb(97, 97, 97, 1)
+gray_800 = rgb(66, 66, 66, 1)
+gray_850 = rgb(38, 38, 38, 1)
+gray_900 = rgb(33, 33, 33, 1)
+red = rgb(244, 67, 54, 1)
+red_50 = rgb(255, 235, 238, 1)
+red_100 = rgb(255, 205, 210, 1)
+red_200 = rgb(239, 154, 154, 1)
+red_300 = rgb(229, 115, 115, 1)
+red_400 = rgb(239, 83, 80, 1)
+red_500 = rgb(244, 67, 54, 1)
+red_600 = rgb(229, 57, 53, 1)
+red_700 = rgb(211, 47, 47, 1)
+red_800 = rgb(198, 40, 40, 1)
+red_900 = rgb(183, 28, 28, 1)
+red_a100 = rgb(255, 138, 128, 1)
+red_a200 = rgb(255, 82, 82, 1)
+red_a400 = rgb(255, 23, 68, 1)
+red_a_700 = rgb(213, 0, 0, 1)
+pink = rgb(233, 30, 99, 1)
+pink_50 = rgb(252, 228, 236, 1)
+pink_100 = rgb(248, 187, 208, 1)
+pink_200 = rgb(244, 143, 177, 1)
+pink_300 = rgb(240, 98, 146, 1)
+pink_400 = rgb(236, 64, 122, 1)
+pink_500 = rgb(233, 30, 99, 1)
+pink_600 = rgb(216, 27, 96, 1)
+pink_700 = rgb(194, 24, 91, 1)
+pink_800 = rgb(173, 20, 87, 1)
+pink_900 = rgb(136, 14, 79, 1)
+pink_a100 = rgb(255, 128, 171, 1)
+pink_a200 = rgb(255, 64, 129, 1)
+pink_a400 = rgb(245, 0, 87, 1)
+pink_a700 = rgb(197, 17, 98, 1)
+purple = rgb(156, 39, 176, 1)
+purple_50 = rgb(243, 229, 245, 1)
+purple_100 = rgb(225, 190, 231, 1)
+purple_200 = rgb(206, 147, 216, 1)
+purple_300 = rgb(186, 104, 200, 1)
+purple_400 = rgb(171, 71, 188, 1)
+purple_500 = rgb(156, 39, 176, 1)
+purple_600 = rgb(142, 36, 170, 1)
+purple_700 = rgb(123, 31, 162, 1)
+purple_800 = rgb(106, 27, 154, 1)
+purple_900 = rgb(74, 20, 140, 1)
+purple_a100 = rgb(234, 128, 252, 1)
+purple_a200 = rgb(224, 64, 251, 1)
+purple_a400 = rgb(213, 0, 249, 1)
+purple_a700 = rgb(170, 0, 255, 1)
+deep_purple = rgb(103, 58, 183, 1)
+deep_purple_50 = rgb(237, 231, 246, 1)
+deep_purple_100 = rgb(209, 196, 233, 1)
+deep_purple_200 = rgb(179, 157, 219, 1)
+deep_purple_300 = rgb(149, 117, 205, 1)
+deep_purple_400 = rgb(126, 87, 194, 1)
+deep_purple_500 = rgb(103, 58, 183, 1)
+deep_purple_600 = rgb(94, 53, 177, 1)
+deep_purple_700 = rgb(81, 45, 168, 1)
+deep_purple_800 = rgb(69, 39, 160, 1)
+deep_purple_900 = rgb(49, 27, 146, 1)
+deep_purple_a100 = rgb(179, 136, 255, 1)
+deep_purple_a200 = rgb(124, 77, 255, 1)
+deep_purple_a400 = rgb(101, 31, 255, 1)
+deep_purple_a700 = rgb(98, 0, 234, 1)
+indigo = rgb(63, 81, 181, 1)
+indigo_50 = rgb(232, 234, 246, 1)
+indigo_100 = rgb(197, 202, 233, 1)
+indigo_200 = rgb(159, 168, 218, 1)
+indigo_300 = rgb(121, 134, 203, 1)
+indigo_400 = rgb(92, 107, 192, 1)
+indigo_500 = rgb(63, 81, 181, 1)
+indigo_600 = rgb(57, 73, 171, 1)
+indigo_700 = rgb(48, 63, 159, 1)
+indigo_800 = rgb(40, 53, 147, 1)
+indigo_900 = rgb(26, 35, 126, 1)
+indigo_a100 = rgb(140, 158, 255, 1)
+indigo_a200 = rgb(83, 109, 254, 1)
+indigo_a400 = rgb(61, 90, 254, 1)
+indigo_a700 = rgb(48, 79, 254, 1)
+blue = rgb(33, 150, 243, 1)
+blue_50 = rgb(227, 242, 253, 1)
+blue_100 = rgb(187, 222, 251, 1)
+blue_200 = rgb(144, 202, 249, 1)
+blue_300 = rgb(100, 181, 246, 1)
+blue_400 = rgb(66, 165, 245, 1)
+blue_500 = rgb(33, 150, 243, 1)
+blue_600 = rgb(30, 136, 229, 1)
+blue_700 = rgb(25, 118, 210, 1)
+blue_800 = rgb(21, 101, 192, 1)
+blue_900 = rgb(13, 71, 161, 1)
+blue_a100 = rgb(130, 177, 255, 1)
+blue_a200 = rgb(68, 138, 255, 1)
+blue_a400 = rgb(41, 121, 255, 1)
+blue_a700 = rgb(41, 98, 255, 1)
+liteblue = rgb(3, 169, 244, 1)
+liteblue_50 = rgb(225, 245, 254, 1)
+liteblue_100 = rgb(179, 229, 252, 1)
+liteblue_200 = rgb(129, 212, 250, 1)
+liteblue_300 = rgb(79, 195, 247, 1)
+liteblue_400 = rgb(41, 182, 246, 1)
+liteblue_500 = rgb(3, 169, 244, 1)
+liteblue_600 = rgb(3, 155, 229, 1)
+liteblue_700 = rgb(2, 136, 209, 1)
+liteblue_800 = rgb(2, 119, 189, 1)
+liteblue_900 = rgb(1, 87, 155, 1)
+liteblue_a100 = rgb(128, 216, 255, 1)
+liteblue_a200 = rgb(64, 196, 255, 1)
+liteblue_a400 = rgb(0, 176, 255, 1)
+liteblue_a700 = rgb(0, 145, 234, 1)
+cyan = rgb(0, 188, 212, 1)
+cyan_50 = rgb(224, 247, 250, 1)
+cyan_100 = rgb(178, 235, 242, 1)
+cyan_200 = rgb(128, 222, 234, 1)
+cyan_300 = rgb(77, 208, 225, 1)
+cyan_400 = rgb(38, 198, 218, 1)
+cyan_500 = rgb(0, 188, 212, 1)
+cyan_600 = rgb(0, 172, 193, 1)
+cyan_700 = rgb(0, 151, 167, 1)
+cyan_800 = rgb(0, 131, 143, 1)
+cyan_900 = rgb(0, 96, 100, 1)
+cyan_a100 = rgb(132, 255, 255, 1)
+cyan_a200 = rgb(24, 255, 255, 1)
+cyan_a400 = rgb(0, 229, 255, 1)
+cyan_a700 = rgb(0, 184, 212, 1)
+teal = rgb(0, 150, 136, 1)
+teal_50 = rgb(224, 242, 241, 1)
+teal_100 = rgb(178, 223, 219, 1)
+teal_200 = rgb(128, 203, 196, 1)
+teal_300 = rgb(77, 182, 172, 1)
+teal_400 = rgb(38, 166, 154, 1)
+teal_500 = rgb(0, 150, 136, 1)
+teal_600 = rgb(0, 137, 123, 1)
+teal_700 = rgb(0, 121, 107, 1)
+teal_800 = rgb(0, 105, 92, 1)
+teal_900 = rgb(0, 77, 64, 1)
+teal_a100 = rgb(167, 255, 235, 1)
+teal_a200 = rgb(100, 255, 218, 1)
+teal_a400 = rgb(29, 233, 182, 1)
+teal_a700 = rgb(0, 191, 165, 1)
+green = rgb(76, 175, 80, 1)
+green_50 = rgb(232, 245, 233, 1)
+green_100 = rgb(200, 230, 201, 1)
+green_200 = rgb(165, 214, 167, 1)
+green_300 = rgb(129, 199, 132, 1)
+green_400 = rgb(102, 187, 106, 1)
+green_500 = rgb(76, 175, 80, 1)
+green_600 = rgb(67, 160, 71, 1)
+green_700 = rgb(56, 142, 60, 1)
+green_800 = rgb(46, 125, 50, 1)
+green_900 = rgb(27, 94, 32, 1)
+green_a100 = rgb(185, 246, 202, 1)
+green_a200 = rgb(105, 240, 174, 1)
+green_a400 = rgb(0, 230, 118, 1)
+green_a700 = rgb(0, 200, 83, 1)
+lite_green = rgb(139, 195, 74, 1)
+lite_green_50 = rgb(241, 248, 233, 1)
+lite_green_100 = rgb(220, 237, 200, 1)
+lite_green_200 = rgb(197, 225, 165, 1)
+lite_green_300 = rgb(174, 213, 129, 1)
+lite_green_400 = rgb(156, 204, 101, 1)
+lite_green_500 = rgb(139, 195, 74, 1)
+lite_green_600 = rgb(124, 179, 66, 1)
+lite_green_700 = rgb(104, 159, 56, 1)
+lite_green_800 = rgb(85, 139, 47, 1)
+lite_green_900 = rgb(51, 105, 30, 1)
+lite_green_a100 = rgb(204, 255, 144, 1)
+lite_green_a200 = rgb(178, 255, 89, 1)
+lite_green_a400 = rgb(118, 255, 3, 1)
+lite_green_a700 = rgb(100, 221, 23, 1)
+lime = rgb(205, 220, 57, 1)
+lime_50 = rgb(249, 251, 231, 1)
+lime_100 = rgb(240, 244, 195, 1)
+lime_200 = rgb(230, 238, 156, 1)
+lime_300 = rgb(220, 231, 117, 1)
+lime_400 = rgb(212, 225, 87, 1)
+lime_500 = rgb(205, 220, 57, 1)
+lime_600 = rgb(192, 202, 51, 1)
+lime_700 = rgb(175, 180, 43, 1)
+lime_800 = rgb(158, 157, 36, 1)
+lime_900 = rgb(130, 119, 23, 1)
+lime_a100 = rgb(244, 255, 129, 1)
+lime_a200 = rgb(238, 255, 65, 1)
+lime_a400 = rgb(198, 255, 0, 1)
+lime_a700 = rgb(174, 234, 0, 1)
+yellow = rgb(255, 235, 59, 1)
+yellow_50 = rgb(255, 253, 231, 1)
+yellow_100 = rgb(255, 249, 196, 1)
+yellow_200 = rgb(255, 245, 157, 1)
+yellow_300 = rgb(255, 241, 118, 1)
+yellow_400 = rgb(255, 238, 88, 1)
+yellow_500 = rgb(255, 235, 59, 1)
+yellow_600 = rgb(253, 216, 53, 1)
+yellow_700 = rgb(251, 192, 45, 1)
+yellow_800 = rgb(249, 168, 37, 1)
+yellow_900 = rgb(245, 127, 23, 1)
+yellow_a100 = rgb(255, 255, 141, 1)
+yellow_a200 = rgb(255, 255, 0, 1)
+yellow_a400 = rgb(255, 234, 0, 1)
+yellow_a700 = rgb(255, 214, 0, 1)
+amber = rgb(255, 193, 7, 1)
+amber_50 = rgb(255, 248, 225, 1)
+amber_100 = rgb(255, 236, 179, 1)
+amber_200 = rgb(255, 224, 130, 1)
+amber_300 = rgb(255, 213, 79, 1)
+amber_400 = rgb(255, 202, 40, 1)
+amber_500 = rgb(255, 193, 7, 1)
+amber_600 = rgb(255, 179, 0, 1)
+amber_700 = rgb(255, 160, 0, 1)
+amber_800 = rgb(255, 143, 0, 1)
+amber_900 = rgb(255, 111, 0, 1)
+amber_a100 = rgb(255, 229, 127, 1)
+amber_a200 = rgb(255, 215, 64, 1)
+amber_a400 = rgb(255, 196, 0, 1)
+amber_a700 = rgb(255, 171, 0, 1)
+orange = rgb(255, 152, 0, 1)
+orange_50 = rgb(255, 243, 224, 1)
+orange_100 = rgb(255, 224, 178, 1)
+orange_200 = rgb(255, 204, 128, 1)
+orange_300 = rgb(255, 183, 77, 1)
+orange_400 = rgb(255, 167, 38, 1)
+orange_500 = rgb(255, 152, 0, 1)
+orange_600 = rgb(251, 140, 0, 1)
+orange_700 = rgb(245, 124, 0, 1)
+orange_800 = rgb(239, 108, 0, 1)
+orange_900 = rgb(230, 81, 0, 1)
+orange_a100 = rgb(255, 209, 128, 1)
+orange_a200 = rgb(255, 171, 64, 1)
+orange_a400 = rgb(255, 145, 0, 1)
+orange_a700 = rgb(255, 109, 0, 1)
+deep_orange = rgb(255, 87, 34, 1)
+deep_orange_50 = rgb(251, 233, 231, 1)
+deep_orange_100 = rgb(255, 204, 188, 1)
+deep_orange_200 = rgb(255, 171, 145, 1)
+deep_orange_300 = rgb(255, 138, 101, 1)
+deep_orange_400 = rgb(255, 112, 67, 1)
+deep_orange_500 = rgb(255, 87, 34, 1)
+deep_orange_600 = rgb(244, 81, 30, 1)
+deep_orange_700 = rgb(230, 74, 25, 1)
+deep_orange_800 = rgb(216, 67, 21, 1)
+deep_orange_900 = rgb(191, 54, 12, 1)
+deep_orange_a100 = rgb(255, 158, 128, 1)
+deep_orange_a200 = rgb(255, 110, 64, 1)
+deep_orange_a400 = rgb(255, 61, 0, 1)
+deep_orange_a700 = rgb(221, 44, 0, 1)
+brown = rgb(121, 85, 72, 1)
+brown_50 = rgb(239, 235, 233, 1)
+brown_100 = rgb(215, 204, 200, 1)
+brown_200 = rgb(188, 170, 164, 1)
+brown_300 = rgb(161, 136, 127, 1)
+brown_400 = rgb(141, 110, 99, 1)
+brown_500 = rgb(121, 85, 72, 1)
+brown_600 = rgb(109, 76, 65, 1)
+brown_700 = rgb(93, 64, 55, 1)
+brown_800 = rgb(78, 52, 46, 1)
+brown_900 = rgb(62, 39, 35, 1)
+blue_grey = rgb(96, 125, 139, 1)
+blue_grey_50 = rgb(236, 239, 241, 1)
+blue_grey_100 = rgb(207, 216, 220, 1)
+blue_grey_200 = rgb(176, 190, 197, 1)
+blue_grey_300 = rgb(144, 164, 174, 1)
+blue_grey_400 = rgb(120, 144, 156, 1)
+blue_grey_500 = rgb(96, 125, 139, 1)
+blue_grey_600 = rgb(84, 110, 122, 1)
+blue_grey_700 = rgb(69, 90, 100, 1)
+blue_grey_800 = rgb(55, 71, 79, 1)
+blue_grey_900 = rgb(38, 50, 56, 1)
+
+/*
+*	VARIABLES
+*/
+
+spacer = 7em
+phone_spacer = 2em
+lite_spacer = 3em
+headline_spacer = 13em
+headline_spacer_phone = 10em
+alt_bg_color = rgb(245, 245, 245, 1)
+smartphones = unquote("only screen and (max-width: 479px)")
+tablets = unquote("only screen and (min-width: 479px) and (max-width: 720px)")
+all_headers = h1, h2, h3, h4, h5, h6
+all_text = h1, h2, h3, h4, h5, h6, p
+
+/*
+*	MIXINS
+*/
+
+spacer(space)
+  padding-top space
+  padding-bottom space
+margin_spacer(space)
+  margin-top space
+  margin-bottom space
+compress(space)
+  padding-left space
+  padding-right space
+center-object()
+  display block
+  margin-left auto
+  margin-right auto
+.center-object
+  center-object()
+tron(width)
+  width width
+  @extend .center-object
+.nudge_down
+  margin-top 2em
+.headliner
+  spacer(3em)
+  tron(50%)
+  h1, h2, h3, h4, h5, h6
+    text-align center
+    font-weight 300
+  p
+    text-align center
+.light
+  font-weight 300
+.center
+  text-align center
+bg_image(name)
+  background name center / cover
+  
+/*
+*	CLASSES
+*/
+
+.card-title
+  font-weight 500
+  color gray_800
+.nudge
+  margin-top 1em
+.big-nudge
+  margin-top 3.5em
+  var54b9139140eb6d3d592a2665 = "" + smartphones + ""
+  @media var54b9139140eb6d3d592a2665
+    margin-top 1em
+.bigger-nudge
+  margin-top 7em
+  
+/*
+*	MATERIAL DASHBOARD LAYOUT
+*/
+
+html, body
+  font-family 'Roboto', 'Helvetica', sans-serif
+.demo-avatar
+  width 48px
+  height 48px
+  border-radius 24px
+.demo-layout .demo-header .mdl-textfield
+  padding 0px
+  margin-top 41px
+.demo-layout .demo-header .mdl-textfield .mdl-textfield__expandable-holder
+  bottom 19px
+.demo-layout .mdl-layout__header .mdl-layout__drawer-button
+  color rgba(0, 0, 0, 0.54)
+.mdl-layout__drawer .avatar
+  margin-bottom 16px
+.demo-drawer
+  border none
+/* iOS Safari specific workaround */
+.demo-drawer .mdl-menu__container
+  z-index -1
+.demo-drawer .demo-navigation
+  z-index -2
+/* END iOS Safari specific workaround */
+.demo-drawer .mdl-menu .mdl-menu__item
+  display -webkit-flex
+  display -ms-flexbox
+  display flex
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+.demo-drawer-header
+  box-sizing border-box
+  display -webkit-flex
+  display -ms-flexbox
+  display flex
+  -webkit-flex-direction column
+  -ms-flex-direction column
+  flex-direction column
+  -webkit-justify-content flex-end
+  -ms-flex-pack end
+  justify-content flex-end
+  padding 16px
+  height 151px
+.demo-avatar-dropdown
+  display -webkit-flex
+  display -ms-flexbox
+  display flex
+  position relative
+  -webkit-flex-direction row
+  -ms-flex-direction row
+  flex-direction row
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+  width 100%
+.demo-navigation
+  -webkit-flex-grow 1
+  -ms-flex-positive 1
+  flex-grow 1
+.demo-layout .demo-navigation .mdl-navigation__link
+  display -webkit-flex !important
+  display -ms-flexbox !important
+  display flex !important
+  -webkit-flex-direction row
+  -ms-flex-direction row
+  flex-direction row
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+  color rgba(255, 255, 255, 0.56)
+  font-weight 500
+.demo-layout .demo-navigation .mdl-navigation__link:hover
+  background-color #00BCD4
+  color #37474F
+.demo-navigation .mdl-navigation__link .material-icons
+  font-size 24px
+  color rgba(255, 255, 255, 0.56)
+  margin-right 32px
+.demo-content
+  max-width 1080px
+.demo-charts
+  -webkit-align-items center
+  -ms-flex-align center
+  -ms-grid-row-align center
+  align-items center
+.demo-chart:nth-child(1)
+  color #ACEC00
+.demo-chart:nth-child(2)
+  color #00BBD6
+.demo-chart:nth-child(3)
+  color #BA65C9
+.demo-chart:nth-child(4)
+  color #EF3C79
+.demo-graphs
+  padding 16px 32px
+  display -webkit-flex
+  display -ms-flexbox
+  display flex
+  -webkit-flex-direction column
+  -ms-flex-direction column
+  flex-direction column
+  -webkit-align-items stretch
+  -ms-flex-align stretch
+  align-items stretch
+/* TODO: Find a proper solution to have the graphs
+ * not float around outside their container in IE10/11.
+ * Using a browserhacks.com solution for now.
+ */
+_:-ms-input-placeholder, :root .demo-graphs
+  min-height 664px
+_:-ms-input-placeholder, :root .demo-graph
+  max-height 300px
+/* TODO end */
+.demo-graph:nth-child(1)
+  color #00b9d8
+.demo-graph:nth-child(2)
+  color #d9006e
+.demo-cards
+  -webkit-align-items flex-start
+  -ms-flex-align start
+  -ms-grid-row-align flex-start
+  align-items flex-start
+  -webkit-align-content flex-start
+  -ms-flex-line-pack start
+  align-content flex-start
+.demo-cards .demo-separator
+  height 32px
+.demo-cards .mdl-card__title.mdl-card__title
+  color white
+  font-size 24px
+  font-weight 400
+.demo-cards ul
+  padding 0
+.demo-cards h3
+  font-size 1em
+.demo-updates .mdl-card__title
+  min-height 200px
+  background-image 'images/dog.png'
+  background-position 90% 100%
+  background-repeat no-repeat
+.demo-cards .mdl-card__actions a
+  color #00BCD4
+  text-decoration none
+.demo-options h3
+  margin 0
+.demo-options .mdl-checkbox__box-outline
+  border-color rgba(255, 255, 255, 0.89)
+.demo-options ul
+  margin 0
+  list-style-type none
+.demo-options li
+  margin 4px 0
+.demo-options .material-icons
+  color rgba(255, 255, 255, 0.89)
+.demo-options .mdl-card__actions
+  height 64px
+  display -webkit-flex
+  display -ms-flexbox
+  display flex
+  box-sizing border-box
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+
+/*
+*	HSDB?? (I THINK IT HAS SOMETHING TO DO WITH PLUGINDIRECTORY)
+*/
+
+.card-size
+  tron(95%)
+.card-size-stack
+  width 100%
+.nudge
+  @extend .nudge_down
+
+/*
+*   DOWNLOADER
+*/
+
+#downloader
+  background-color indigo_500
+  color #fff
+  .mdl-card__title
+    height 10em
+    color #fff
+    align-items flex-start
+    h4
+      margin-top 0
+  .mdl-card__actions
+    border-color rgba(255, 255, 255, 0.2)
+    display flex
+    box-sizing border-box
+    align-items center
+    color #fff
+    .material-icons
+      padding-right 10px
+      color #fff
+    a.mdl-button
+      color #fff
+
+/*
+    PAY SETUP
+*/
+
+#pay_setup
+  background-color deep_orange_700
+  color #fff
+  .mdl-card__title
+    height 10em
+    color #fff
+    align-items flex-start
+    h4
+      margin-top 0
+  .mdl-card__actions
+    border-color rgba(255, 255, 255, 0.2)
+    display flex
+    box-sizing border-box
+    align-items center
+    color #fff
+    .material-icons
+      padding-right 10px
+      color #fff
+    a.mdl-button
+      color #fff
+
+/*
+    ACCOUNT DELETE
+*/
+
+#acct_delete
+  background-color red_100
+  a.mdl-button
+    color red
+    
+/*
+    ACCT SETTINGS
+*/
+i.material-icons.mdl-list__item-avatar
+  color indigo
+  background-color transparent
+
+#acct_settings
+  background-color liteblue_50
+
+/*
+    CHANGE CARD
+*/
+
+// nothing
+
+/*
+    EDIT EMAIL MODAL
+*/
+
+// nothing
+
+/*
+    LRN VIDEO
+*/
+
+.lrn_video
+  margin_spacer(2em)
+  .mdl-card__media
+    background-color red_50
+  img
+    tron(30%)
+    spacer(2em)
+
+/*
+*   PLUGIN LINK
+*/
+.plugin_link
+  margin_spacer(2em)
+  .mdl-card__media
+    background-color gray_300
+    padding 0, 0, 0, 0
+  img
+    tron(100%)
+
+/*
+    PAYCARD
+*/
+
+#pay_card
+  background-color green_50
+
+/*
+    PAY DETAILS
+*/
+
+#pay_details
+  background-color liteblue_50
+
+/*
+    PLUGIN DIRECTORY
+*/
+
+#plugin_directory
+  .demo-card-image.mdl-card
+    height 256px
+    width 100%
+  .card-grid
+    spacer(2em)
+  .demo-card-image > .mdl-card__actions
+    height 52px
+    padding 16px
+    background-color #424242
+  .demo-card-image__filename
+    color #fff
+    font-size 14px
+    font-weight 500
+  .card_container
+    width 100%
+  .container_x
+    tron(60%)
+  background-color alt_bg_color
+  padding-top spacer
+  .mdl-grid
+    a
+      color white
+  #hybrit
+    bg_image('http://s3.amazonaws.com/hs.web/images/plugin_list/hybrit.png')
+  #le456
+    bg_image('/images/plugin_list/le456.png')
+  #lecto
+    bg_image('/images/plugin_list/lecto.png')
+  #legion
+    bg_image('/images/plugin_list/legion.png')
+  #lextac
+    bg_image('/images/plugin_list/lextac.png')
+  #emissary
+    bg_image('/images/plugin_list/emissary.png')
+  #nc_7170
+    bg_image('/images/plugin_list/nc_7170.png')
+  #nc_8505
+    bg_image('/images/plugin_list/nc_8505.png')
+  #lecab
+    bg_image('/images/plugin_list/lecab.png')
+  #nadir
+    bg_image('/images/plugin_list/NadIR.png')
+  #godscab
+    bg_image('/images/plugin_list/gods_cab.png')
+  #catharsis
+    bg_image('/images/plugin_list/catharsis.png')
+  #karlette
+    bg_image('/images/plugin_list/karlette.png')
+  #freq_echo
+    bg_image('/images/plugin_list/freq_echo.png')
+  #oldskool_reverb
+    bg_image('/images/plugin_list/oldskool_reverb.png')
+  #bc_eq
+    bg_image('/images/plugin_list/bc_eq.png')
+  #pteq-1a
+    bg_image('/images/plugin_list/pteq-1a.png')
+  #nova67p
+    bg_image('/images/plugin_list/nova67p.png')
+  #dc1a2
+    bg_image('/images/plugin_list/dc1a2.png')
+  #nova67p-2
+    bg_image('/images/plugin_list/nova67p.png')
+  #roughrider
+    bg_image('/images/plugin_list/roughrider.png')
+  #tse808
+    bg_image('/images/plugin_list/tse808.png')
+  #ts999
+    bg_image('/images/plugin_list/ts999.png')
+  #tubedriver
+    bg_image('/images/plugin_list/tubedriver.png')
+  #bc_gain
+    bg_image('/images/plugin_list/bc_gain.png')
+  #multiply
+    bg_image('/images/plugin_list/multiply.png')
+  #multiply2
+    bg_image('/images/plugin_list/multiply.png')
+  #bc_chorus
+    bg_image('/images/plugin_list/bc_chorus.png')
+  #multiply3
+    bg_image('/images/plugin_list/multiply.png')
+  #bc_flanger
+    bg_image('/images/plugin_list/bc_flanger.png')
+  #multiply4
+    bg_image('/images/plugin_list/multiply.png')
+  #bc_phaser
+    bg_image('/images/plugin_list/bc_phaser.png')
+  #hysteresis
+    bg_image('/images/plugin_list/hysteresis.png')
+  #fracture
+    bg_image('/images/plugin_list/fracture.png')
+  #bias_fx
+    bg_image('/images/plugin_list/bias_fx.png')
+  #amplitube
+    bg_image('/images/plugin_list/amplitube.png')
+  #guitar_rig
+    bg_image('/images/plugin_list/guitar_rig.png')
+  #revalver
+    bg_image('/images/plugin_list/revalver.png')
+  #bias_amp
+    bg_image('/images/plugin_list/bias_amp.png')
+  #jst_menace
+    bg_image('/images/plugin_list/jst_menace.png')
+  #jst_ben_bruce
+    bg_image('/images/plugin_list/jst_ben_bruce.png')
+  #plugin_dir_bottom
+    tron(50%)
+    spacer(spacer)
+    a
+      color orange
+    h4
+      font-weight 300
+      text-align center
+    p
+      text-align center
