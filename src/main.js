@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import Home from './components/Home_p'
 import Account from './components/Account_P'
 import Learn from './components/Learn_P'
 import Payment from './components/Payment_P'
+import Login from './components/Login'
+import Signup from './components/Signup'
 import PluginDirectory from './components/PluginDirectory_P'
 import Store from './vuex/Store'
+import auth from './auth/auth'
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
-const router = new VueRouter()
+auth.checkAuth()
+
+export const router = new VueRouter()
 const App = Vue.extend({
 	data () {
 		return {
@@ -20,20 +27,20 @@ const App = Vue.extend({
 	methods: {
 		login (msg, e) {
 			e.stopPropagation()
-			const self = this
-			const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
+	const self = this
+	const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
 
-			lock.show((err, profile, token) => {
-        if (err) {
-          // Handle the error
-          console.log(err)
-        } else {
-          // Set the token and user profile in local storage
-          localStorage.setItem('profile', JSON.stringify(profile))
-          localStorage.setItem('id_token', token)
-          self.authenticated = true
-        }
-      })
+	lock.show((err, profile, token) => {
+    if (err) {
+      // Handle the error
+      console.log(err)
+    } else {
+      // Set the token and user profile in local storage
+      localStorage.setItem('profile', JSON.stringify(profile))
+      localStorage.setItem('id_token', token)
+      self.authenticated = true
+    }
+  })
 		},
 
 		logout () {
@@ -69,6 +76,20 @@ router.map({
 	'/plugindirectory': {
 		component: PluginDirectory,
 		name: 'plugindirectory'
+	},
+
+	'/login': {
+		component: Login,
+		name: 'login'
+	},
+
+	'/signup': {
+		component: Signup,
+		name: 'signup'
+	},
+
+	'*': {
+		component: Home
 	}
 })
 

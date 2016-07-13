@@ -3,13 +3,19 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const state = {
-	count: 0
+let state = {
+	email: '',
+	username: '',
+	stripeId: '',
+	id: ''
 }
 
 const mutations = {
-	INCREMENT (state, amount) {
-		state.count = state.count + amount
+	SET_PROFILE (state, user) {
+		state.email = user.email
+		state.username = user.username
+		state.stripeId = user.stripeId
+		state.id = user.id
 	}
 }
 

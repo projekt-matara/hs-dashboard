@@ -15,6 +15,7 @@ import Navbar from './Navbar'
 import Topbar from './Topbar'
 import Downloader from './Downloader'
 import PaySetup from './PaySetup'
+import auth from '../auth/auth'
 
 export default {
 	components: {
@@ -31,6 +32,16 @@ export default {
 			componentHandler.upgradeDom()
 			componentHandler.upgradeAllRegistered()
 		})
+	},
+
+	route: {
+		canActivate (transition) {
+			if (auth.user.authenticated) {
+				transition.next()
+			} else {
+				transition.redirect('/login')
+			}
+		}
 	}
 }
 

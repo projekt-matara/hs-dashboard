@@ -168,6 +168,8 @@ import Navbar from './Navbar'
 import Topbar from './Topbar'
 import PluginLink from './PluginLink'
 import {PluginDirectory} from '../PluginDirectory'
+import Store from '../vuex/Store.js'
+import auth from '../auth/auth'
 
 const obj = PluginDirectory()
 
@@ -177,6 +179,8 @@ export default {
 		Topbar,
     PluginLink
 	},
+
+  store: Store,
 
   methods: {
     stopLink (msg, e) {
@@ -196,6 +200,16 @@ export default {
       componentHandler.upgradeDom()
       componentHandler.upgradeAllRegistered()
     })
+  },
+
+  route: {
+    canActivate (transition) {
+      if (auth.user.authenticated) {
+        transition.next()
+      } else {
+        transition.redirect('/login')
+      }
+    }
   }
 }
 </script>

@@ -16,6 +16,8 @@ import Topbar from './Topbar'
 import PayDetails from './PayDetails'
 import PayCard from './PayCard'
 import EditEmailModal from './EditEmailModal'
+import auth from '../auth/auth'
+
 export default {
 	store: Store,
 
@@ -32,6 +34,16 @@ export default {
 			componentHandler.upgradeDom()
 			componentHandler.upgradeAllRegistered()
 		})
+	},
+
+	route: {
+		canActivate (transition) {
+			if (auth.user.authenticated) {
+				transition.next()
+			} else {
+				transition.redirect('/login')
+			}
+		}
 	}
 }
 </script>

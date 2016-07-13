@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "auth0-js": "^7.0.3",
     "babel-runtime": "^6.0.0",
     "jquery": "^3.0.0",
     "material-design-lite": "^1.1.3",
