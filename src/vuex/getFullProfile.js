@@ -3,6 +3,7 @@ export function getFullProfile (state) {
 		username: state.username,
 		email: state.email,
 		stripeId: state.stripeId,
-		id: state.id
+		id: state.id,
+		stripeStatus: state.stripeStatus
 	}
 }

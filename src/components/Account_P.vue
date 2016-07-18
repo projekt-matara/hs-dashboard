@@ -4,7 +4,7 @@ Navbar
 main.mdl-layout__content.mdl-color--grey-100
 	.mdl-grid.demo-content
 		.mdl-cell--12-col
-			Acct-Settings(:email="profile.email", :id="profile.id")
+			Acct-Settings(:email="profile.email", :id="profile.id", :stripeStatus="profile.stripeStatus")
 		.mdl-cell--6-col.nudge
 			Acct-Delete(:id="profile.id")
 </template>

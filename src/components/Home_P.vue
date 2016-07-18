@@ -6,7 +6,7 @@ main.mdl-layout__content.mdl-color--grey-100
 		.mdl-cell--6-col
 			Downloader
 		.mdl-cell--6-col
-			Pay-Setup
+			Pay-Setup(:id="profile.id")
 </template>
 
 <script>
@@ -16,6 +16,7 @@ import Topbar from './Topbar'
 import Downloader from './Downloader'
 import PaySetup from './PaySetup'
 import auth from '../auth/auth'
+import getFullProfile from '../vuex/getFullProfile'
 
 export default {
 	components: {
@@ -32,6 +33,12 @@ export default {
 			componentHandler.upgradeDom()
 			componentHandler.upgradeAllRegistered()
 		})
+	},
+
+	vuex: {
+		getters: {
+			profile: getFullProfile
+		}
 	},
 
 	route: {

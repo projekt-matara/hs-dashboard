@@ -33,7 +33,8 @@ export default {
             username: data.username,
             id: data.user_id,
             stripeId: data.stripeId,
-            cardId: data.cardId
+            cardId: data.cardId,
+            stripeStatus: data.stripeStatus
           })
           self.user.authenticated = true
           if (redirect) {

@@ -28,7 +28,7 @@
 				span.mdl-list__item-primary-content
 					i.material-icons.mdl-list__item-avatar payment
 					span Subscription Status
-					span.mdl-list__item-text-body Active
+					span.mdl-list__item-text-body {{stripeStatus == true ? 'Active' : 'Inactive'}}
 				span.mdl-list__item-secondary-content
 					a(href="#", class="mdl-list__item-secondary-action")
 						i.material-icons create
@@ -37,6 +37,7 @@
 <script>
 import EditEmailModal from './EditEmailModal'
 // import $ from 'jquery'
+
 export default {
 	components: {
 		EditEmailModal
@@ -44,7 +45,8 @@ export default {
 
 	props: [
 		'email',
-		'id'
+		'id',
+		'stripeStatus'
 	]
 }
 </script>

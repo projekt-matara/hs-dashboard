@@ -7,19 +7,19 @@
 		.mdl-grid
 			.mdl-cell--4-col
 				h5 Email
-				p  sample@email.com
+				p  {{stripeEmail}}
 			.mdl-cell--4-col
 				h5 Country
-				p US
+				p {{stripeCountry}}
 			.mdl-cell--4-col
 				h5 Last 4 Digits on Card
-				p 1234
+				p {{stripeDigits}}
 			.mdl-cell--4-col
 				h5 Brand
-				p Visa
+				p {{stripeBrand}}
 			.mdl-cell--4-col
 				h5 Expiration
-				p 07/18
+				p {{stripeExp}}
 	.mdl-card__actions.mdl-card--border
 		a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card") Change Card
 </template>
@@ -29,6 +29,15 @@ import ChangeCard from './ChangeCard'
 export default {
 	components: {
 		ChangeCard
-	}
+	},
+
+	props: [
+		'stripeEmail',
+		'stripeCountry',
+		'stripeDigits',
+		'stripeBrand',
+		'stripeExp',
+		'stripeStatus'
+	]
 }
 </script>
