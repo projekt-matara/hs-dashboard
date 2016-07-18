@@ -7,7 +7,8 @@ let state = {
 	email: '',
 	username: '',
 	stripeId: '',
-	id: ''
+	id: '',
+	cardId: ''
 }
 
 const mutations = {
@@ -16,6 +17,23 @@ const mutations = {
 		state.username = user.username
 		state.stripeId = user.stripeId
 		state.id = user.id
+		state.cardId = user.cardId
+	},
+
+	UPDATE_EMAIL (state, email) {
+		state.email = email
+	},
+
+	UPDATE_USERNAME (state, username) {
+		state.username = username
+	},
+
+	UPDATE_STRIPEID (state, stripeId) {
+		state.stripeId = stripeId
+	},
+
+	UDPATE_CARDID (state, cardId) {
+		state.cardId = cardId
 	}
 }
 

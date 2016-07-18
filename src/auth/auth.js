@@ -15,27 +15,27 @@ export default {
   },
 
   login (context, creds, redirect) {
+    const self = this
     auth0.login({
       connection: 'Username-Password-Authentication',
       username: creds.username,
       password: creds.password
     }, (err, profile) => {
       if (err) {
-        console.log(err)
+        context.error = err
       } else {
         localStorage.setItem('idToken', profile.idToken)
         context.$http.get('http://localhost:3000/user/' + profile.idTokenPayload.sub)
         .then((response) => {
-          const data = JSON.parse(response.data)
-          const userProfile = {
+          const data = response.data
+          context.setProfile({
             email: data.email,
             username: data.username,
             id: data.user_id,
-            stripeId: data.user_metadata.stripe_id
-          }
-          context.setProfile(userProfile)
-          this.user.authenticated = true
-
+            stripeId: data.stripeId,
+            cardId: data.cardId
+          })
+          self.user.authenticated = true
           if (redirect) {
             router.go(redirect)
           }
@@ -48,15 +48,27 @@ export default {
   },
 
   signup (context, creds, redirect) {
-    context.$http.post(SIGNUP_URL, creds, (data) => {
-      localStorage.setItem('id_token', data.id_token)
-
-      this.user.authenticated = true
-
+    const self = this
+    context.$http.post('http://localhost:3000/user', {
+      email: creds.email,
+      username: creds.username,
+      password: creds.password
+    })
+    .then((response) => {
+      localStorage.setItem('idToken', response.data.id_token)
+      context.setProfile({
+        email: creds.email,
+        username: creds.username,
+        id: response.data.id,
+        stripeId: '',
+        cardId: ''
+      })
+      self.user.authenticated = true
       if (redirect) {
         router.go(redirect)
       }
-    }).catch((err) => {
+    })
+    .catch((err) => {
       context.error = err
     })
   },
@@ -68,7 +80,7 @@ export default {
   },
 
   checkAuth () {
-    var jwt = localStorage.getItem('id_token')
+    const jwt = localStorage.getItem('id_token')
     if (jwt) {
       this.user.authenticated = true
     } else {

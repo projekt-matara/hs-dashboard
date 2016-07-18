@@ -10,7 +10,7 @@
 				span.mdl-list__item-primary-content
 					i.material-icons.mdl-list__item-avatar email
 					span Email
-					span.mdl-list__item-text-body email@email.com
+					span.mdl-list__item-text-body {{email}}
 				span.mdl-list__item-secondary-content
 					a(href="#", class="mdl-list__item-secondary-action edit_email")
 						i.material-icons create
@@ -40,7 +40,12 @@ import EditEmailModal from './EditEmailModal'
 export default {
 	components: {
 		EditEmailModal
-	}
+	},
+
+	props: [
+		'email',
+		'id'
+	]
 }
 </script>
 

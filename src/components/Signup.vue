@@ -1,7 +1,7 @@
 <template lang="jade">
 .mdl-grid#login
   .mdl-cell--12-col
-    h2#headline One price, all of Halfstak
+    h2#headline Welcome to Halfstak
     #the_form.demo-card-event.mdl-card.mdl-shadow--2dp
       .mdl-card__title.mdl-card--expand
         h2.mdl-card__title-text Signup
@@ -17,11 +17,16 @@
             input(class="mdl-textfield__input" type="password", name="password", v-model="credentials.password")
             label(class="mdl-textfield__label" for="password") Password
           .mdl-card__actions
-            input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Login")
+            input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Sign Up")
+    p Already have an account? 
+    .alt-link
+      a(v-link="{name:'login'}") Login here!
 </template>
 
 <script>
 import auth from '../auth/auth.js'
+import Store from '../vuex/Store'
+import {setProfile} from '../vuex/setProfile'
 
 export default{
 	data () {
@@ -37,10 +42,19 @@ export default{
     }
 	},
 
+  store: Store,
+
+  vuex: {
+    actions: {
+      setProfile
+    }
+  },
+
 	methods: {
     submit () {
       var credentials = {
         username: this.credentials.username,
+        email: this.credentials.email,
         password: this.credentials.password
       }
       // We need to pass the component's this context

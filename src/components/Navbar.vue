@@ -3,7 +3,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 		header.demo-drawer-header
 			img(src="http://s3.amazonaws.com/hs.web/images/user.jpg", class="demo-avatar")
 			.demo-avatar-dropdown
-				span email@email.com
+				span {{userEmail}}
 				.mdl-layout-spacer
 				button(id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon")
 					i(class="material-icons", role="presentation") arrow_drop_down
@@ -33,7 +33,16 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 </template>
 
 <script>
+import Store from '../vuex/Store'
+import {userEmail} from '../vuex/userEmail'
+
 export default {
+	store: Store,
+	vuex: {
+		getters: {
+			userEmail
+		}
+	},
 	ready () {
     this.$nextTick(() => {
       componentHandler.upgradeDom()

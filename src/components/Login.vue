@@ -15,6 +15,9 @@
 						label(class="mdl-textfield__label" for="password") Password
 					.mdl-card__actions
 						input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Login")
+		p Don't have an account? 
+		.alt-link
+			a(v-link="{name:'signup'}") Sign up here!
 </template>
 
 <script>

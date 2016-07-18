@@ -18,14 +18,16 @@ Purpose: Allow the user to delete their account
 </template>
 
 <script>
+import Store from '../vuex/Store'
+
 export default {
+	store: Store,
+
+	props: [
+		'id'
+	]
 }
 </script>
-
-<style lang="stylus">
-@import '../main.styl'
-
-</style>
 
 <style lang="stylus">
 @import '../main.styl'
