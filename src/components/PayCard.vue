@@ -7,19 +7,19 @@
 		.mdl-grid
 			.mdl-cell--4-col
 				h5 Email
-				p  {{stripeEmail}}
+				p  {{stripe-email}}
 			.mdl-cell--4-col
 				h5 Country
-				p {{stripeCountry}}
+				p {{stripe-country}}
 			.mdl-cell--4-col
 				h5 Last 4 Digits on Card
-				p {{stripeDigits}}
+				p {{stripe-digits}}
 			.mdl-cell--4-col
 				h5 Brand
-				p {{stripeBrand}}
+				p {{stripe-brand}}
 			.mdl-cell--4-col
 				h5 Expiration
-				p {{stripeExp}}
+				p {{stripe-exp}}
 	.mdl-card__actions.mdl-card--border
 		a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card") Change Card
 </template>

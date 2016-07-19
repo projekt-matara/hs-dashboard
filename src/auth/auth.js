@@ -31,10 +31,17 @@ export default {
           context.setProfile({
             email: data.email,
             username: data.username,
-            id: data.user_id,
+            id: data.id,
             stripeId: data.stripeId,
             cardId: data.cardId,
-            stripeStatus: data.stripeStatus
+            stripeStatus: data.stripeStatus,
+            stripeEmail: data.stripeEmail,
+            stripeCountry: data.stripeCountry,
+            stripeDigits: data.stripeDigits,
+            stripeBrand: data.stripeBrand,
+            stripeExp: data.stripeExp,
+            stripeExpMonth: data.stripeExpMonth,
+            stripeExpYear: data.stripeExpYear
           })
           self.user.authenticated = true
           if (redirect) {

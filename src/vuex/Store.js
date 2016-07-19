@@ -14,7 +14,9 @@ let state = {
 	stripeCountry: '',
 	stripeDigits: '',
 	stripeBrand: '',
-	stripeExp: ''
+	stripeExp: '',
+	stripeExpMonth: '',
+	stripeExpYear: ''
 }
 
 const mutations = {
@@ -30,6 +32,20 @@ const mutations = {
 		state.stripeDigits = user.stripeDigits
 		state.stripeBrand = user.stripeBrand
 		state.stripeExp = user.stripeExp
+		state.stripeExpMonth = user.stripeExpMonth
+		state.stripeExpYear = user.stripeExpYear
+	},
+
+	SET_CUSTOMER (state, cus) {
+		state.cardId = cus.cardId
+		state.stripeStatus = cus.stripeStatus
+		state.stripeEmail = cus.stripeEmail
+		state.stripeCountry = cus.stripeCountry
+		state.stripeDigits = cus.stripeDigits
+		state.stripeBrand = cus.stripeBrand
+		state.stripeExp = cus.stripeExp
+		state.stripeExpMonth = cus.stripeExpMonth
+		state.stripeExpYear = cus.stripeExpYear
 	},
 
 	UPDATE_EMAIL (state, email) {

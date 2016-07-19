@@ -9,28 +9,53 @@
 
 <script>
 import Store from '../vuex/Store'
-const self = this
-const urlRoot = 'http://localhost:3000'
-const resource = this.$resource(urlRoot + '/stripe/create')
-const handler = StripeCheckout.configure({
-	key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
-	token: (token) => {
-		resource.save({id: self.id}, {
-			token: token.id,
-			email: token.email
-		})
-	}
-})
+import {setCustomer} from '../vuex/setCustomer'
 
 export default {
 	methods: {
 		openStripe () {
+			const self = this
+			const handler = StripeCheckout.configure({
+				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
+				token: (token) => {
+					self.$http.post('http://localhost:3000/stripe/create', {
+						token: token.id,
+						email: token.email,
+						id: self.id
+					}).then((result) => {
+						// you should be getting a nice clean json with the information to update the Store
+						const res = JSON.parse(result.body)
+						console.log(res.body)
+						const x = {
+							cardId: res.body.user_metadata.card_id,
+							stripeStatus: res.body.user_metadata.stripe_status,
+							stripeEmail: res.body.user_metadata.stripe_email,
+							stripeCountry: res.body.user_metadata.stripe_country,
+							stripeDigits: res.body.user_metadata.stripe_digits,
+							stripeBrand: res.body.user_metadata.stripe_brand,
+							stripeExp: res.body.user_metadata.stripe_exp,
+							stripeExpMonth: res.body.user_metadata.stripe_exp_month,
+							stripeExpYear: res.body.user_metadata.stripe_exp_year
+						}
+						console.log(x)
+						self.setCustomer(x)
+					}).catch((err) => {
+						console.log(err)
+					})
+				}
+			})
 			handler.open({
 				name: 'Matara',
 				description: 'Subscription for Halfstak',
 				amount: 695,
 				zipCode: true
 			})
+		}
+	},
+
+	vuex: {
+		actions: {
+			setCustomer
 		}
 	},
 

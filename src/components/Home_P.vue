@@ -16,7 +16,7 @@ import Topbar from './Topbar'
 import Downloader from './Downloader'
 import PaySetup from './PaySetup'
 import auth from '../auth/auth'
-import getFullProfile from '../vuex/getFullProfile'
+import {getFullProfile} from '../vuex/getFullProfile'
 
 export default {
 	components: {
