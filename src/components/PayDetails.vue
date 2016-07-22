@@ -6,30 +6,47 @@
 	.mdl-card__supporting-text
 		ul.mdl-list
 			// Email
-			li.mdl-list__item.mdl-list__item--three-line
+			li(class="mdl-list__item mdl-list__item--three-line")
 				span.mdl-list__item-primary-content
 					i.material-icons.mdl-list__item-avatar email
 					span Payment Email
-					span.mdl-list__item-text-body email@email.com
+					span.mdl-list__item-text-body {{stripeEmail}}
 				span.mdl-list__item-secondary-content
-					a(href="#", class="mdl-list__item-secondary-action edit_email")
+					a(v-link="{name: 'edit-pay-email'}", class="mdl-list__item-secondary-action edit_email")
 						i.material-icons create
 			// Subscription
 			li.mdl-list__item.mdl-list__item--three-line
 				span.mdl-list__item-primary-content
 					i.material-icons.mdl-list__item-avatar payment
 					span Subscription
-					span.mdl-list__item-text-body Active
-				span.mdl-list__item-secondary-content
-					a(href="#", class="mdl-list__item-secondary-action")
-						i.material-icons create
+					span.mdl-list__item-text-body {{status}}
+	.mdl-card__actions.mdl-card--border
+		a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card") Cancel Subscription
 </template>
 
 <script>
-import EditEmailModal from './EditEmailModal'
+import EditEmail from './EditEmail'
 export default {
 	components: {
-		EditEmailModal
+		EditEmail
+	},
+
+	props: [
+		'stripeEmail',
+		'stripeStatus'
+	],
+
+	ready () {
+	},
+
+	computed: {
+		status () {
+			if (this.stripeStatus === true) {
+				return 'Active: $6.95 per month.'
+			} else {
+				return 'Inactive'
+			}
+		}
 	}
 }
 </script>

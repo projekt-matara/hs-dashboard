@@ -5,7 +5,7 @@ main.mdl-layout__content.mdl-color--grey-100
 	.mdl-grid.demo-content
 		.mdl-cell--6-col
 			Downloader
-		.mdl-cell--6-col
+		div(class="mdl-cell--6-col", v-if="profile.stripeStatus != true")
 			Pay-Setup(:id="profile.id")
 </template>
 

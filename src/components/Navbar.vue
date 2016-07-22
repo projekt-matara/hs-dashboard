@@ -9,7 +9,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 					i(class="material-icons", role="presentation") arrow_drop_down
 					span.visuallyhidden Accounts
 				ul(class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect", for="accbtn")
-					li(class="mdl-menu__item logout") Logout
+					li(class="mdl-menu__item logout", @click="logout") Logout
 		nav(class="demo-navigation mdl-navigation mdl-color--blue-grey-800")
 			a.mdl-navigation__link(href="#", v-link="{name: 'home'}")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") home 
@@ -20,7 +20,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 			a.mdl-navigation__link(href="#", v-link="{name: 'payment'}")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") credit_card
 				| Payment
-			a.mdl-navigation__link(href="#", v-link="{name: 'plugindirectory'}")
+			a.mdl-navigation__link(href="#", v-link="{name: 'plugin-directory'}")
 				i(class="mdl-color-text--blue-grey-400 material-icons" role="presentation") folder
 				| Plugin Directory
 			a.mdl-navigation__link(href="#", v-link="{name: 'learn'}")
@@ -35,14 +35,23 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 <script>
 import Store from '../vuex/Store'
 import {userEmail} from '../vuex/userEmail'
+import auth from '../auth/auth'
 
 export default {
 	store: Store,
+
 	vuex: {
 		getters: {
 			userEmail
 		}
 	},
+
+	methods: {
+		logout () {
+			auth.logout()
+		}
+	},
+
 	ready () {
     this.$nextTick(() => {
       componentHandler.upgradeDom()

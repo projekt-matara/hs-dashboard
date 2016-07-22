@@ -4,9 +4,9 @@ Navbar
 main.mdl-layout__content.mdl-color--grey-100
 	.mdl-grid.demo-content
 		.mdl-cell--12-col
-			Acct-Settings(:email="profile.email", :id="profile.id", :stripeStatus="profile.stripeStatus")
+			acct-settings(:email="profile.email", :id="profile.id", :stripe-status="profile.stripeStatus")
 		.mdl-cell--6-col.nudge
-			Acct-Delete(:id="profile.id")
+			acct-delete(:id="profile.id")
 </template>
 
 <script>
@@ -15,7 +15,7 @@ import Navbar from './Navbar'
 import Topbar from './Topbar'
 import AcctSettings from './AcctSettings'
 import AcctDelete from './AcctDelete'
-import EditEmailModal from './EditEmailModal'
+import EditEmail from './EditEmail'
 import auth from '../auth/auth'
 import {getFullProfile} from '../vuex/getFullProfile'
 
@@ -27,7 +27,7 @@ export default {
 		Topbar,
 		AcctSettings,
 		AcctDelete,
-		EditEmailModal
+		EditEmail
 	},
 
 	ready () {

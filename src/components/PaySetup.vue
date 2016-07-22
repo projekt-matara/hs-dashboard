@@ -35,9 +35,9 @@ export default {
 							stripeBrand: res.body.user_metadata.stripe_brand,
 							stripeExp: res.body.user_metadata.stripe_exp,
 							stripeExpMonth: res.body.user_metadata.stripe_exp_month,
-							stripeExpYear: res.body.user_metadata.stripe_exp_year
+							stripeExpYear: res.body.user_metadata.stripe_exp_year,
+							stripeId: res.body.user_metadata.stripe_id
 						}
-						console.log(x)
 						self.setCustomer(x)
 					}).catch((err) => {
 						console.log(err)

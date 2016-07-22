@@ -46,10 +46,15 @@ const mutations = {
 		state.stripeExp = cus.stripeExp
 		state.stripeExpMonth = cus.stripeExpMonth
 		state.stripeExpYear = cus.stripeExpYear
+		state.stripeId = cus.stripeId
 	},
 
 	UPDATE_EMAIL (state, email) {
 		state.email = email
+	},
+
+	UPDATE_PAYMENT_EMAIL (state, email) {
+		state.stripeEmail = email
 	},
 
 	UPDATE_USERNAME (state, username) {

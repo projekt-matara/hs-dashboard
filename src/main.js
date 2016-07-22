@@ -7,6 +7,9 @@ import Learn from './components/Learn_P'
 import Payment from './components/Payment_P'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import EditEmail from './components/EditEmail'
+import EditPayEmail from './components/EditPayEmail'
+import ChangePassword from './components/ChangePassword'
 import PluginDirectory from './components/PluginDirectory_P'
 import Store from './vuex/Store'
 import auth from './auth/auth'
@@ -27,27 +30,26 @@ const App = Vue.extend({
 	methods: {
 		login (msg, e) {
 			e.stopPropagation()
-	const self = this
-	const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
+			const self = this
+			const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
 
-	lock.show((err, profile, token) => {
-    if (err) {
-      // Handle the error
-      console.log(err)
-    } else {
-      // Set the token and user profile in local storage
-      localStorage.setItem('profile', JSON.stringify(profile))
-      localStorage.setItem('id_token', token)
-      self.authenticated = true
-    }
-  })
+			lock.show((err, profile, token) => {
+				if (err) {
+					// Handle the error
+					console.log(err)
+				} else {
+					// Set the token and user profile in local storage
+					localStorage.setItem('profile', JSON.stringify(profile))
+					localStorage.setItem('id_token', token)
+					self.authenticated = true
+				}
+			})
 		},
 
 		logout () {
-			const self = this
 			localStorage.removeItem('id_token')
 			localStorage.removeItem('profile')
-			self.authenticated = false
+			this.authenticated = false
 		}
 	}
 })
@@ -75,7 +77,7 @@ router.map({
 
 	'/plugindirectory': {
 		component: PluginDirectory,
-		name: 'plugindirectory'
+		name: 'plugin-directory'
 	},
 
 	'/login': {
@@ -86,6 +88,21 @@ router.map({
 	'/signup': {
 		component: Signup,
 		name: 'signup'
+	},
+
+	'/editemail': {
+		component: EditEmail,
+		name: 'edit-email'
+	},
+
+	'/editpayemail': {
+		component: EditPayEmail,
+		name: 'edit-pay-email'
+	},
+
+	'/changepassword': {
+		component: ChangePassword,
+		name: 'change-password'
 	},
 
 	'*': {
