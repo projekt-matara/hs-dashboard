@@ -10,6 +10,7 @@ import Signup from './components/Signup'
 import EditEmail from './components/EditEmail'
 import EditPayEmail from './components/EditPayEmail'
 import ChangePassword from './components/ChangePassword'
+import ChangeCard from './components/ChangeCard'
 import PluginDirectory from './components/PluginDirectory_P'
 import Store from './vuex/Store'
 import auth from './auth/auth'
@@ -103,6 +104,11 @@ router.map({
 	'/changepassword': {
 		component: ChangePassword,
 		name: 'change-password'
+	},
+
+	'/changecard': {
+		component: ChangeCard,
+		name: 'change-card'
 	},
 
 	'*': {

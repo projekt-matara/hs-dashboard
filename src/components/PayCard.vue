@@ -21,14 +21,30 @@
 				h5 Expiration
 				p {{stripeExp}}
 	.mdl-card__actions.mdl-card--border
-		a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card") Change Card
+		a(
+		class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card",
+		@click="changeCard()") Change Card
 </template>
 
 <script>
 import ChangeCard from './ChangeCard'
+import Store from '../vuex/Store'
+import {getFullProfile} from '../vuex/getFullProfile'
+import {setCard} from '../vuex/setCard'
 export default {
 	components: {
 		ChangeCard
+	},
+
+	store: Store,
+
+	vuex: {
+		getters: {
+			profile: getFullProfile
+		},
+		actions: {
+			setCard
+		}
 	},
 
 	props: [
@@ -38,6 +54,43 @@ export default {
 		'stripeBrand',
 		'stripeExp',
 		'stripeStatus'
-	]
+	],
+
+	methods: {
+		changeCard () {
+			const self = this
+			const handler = StripeCheckout.configure({
+				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
+				token: (token) => {
+					self.$http.put('http://localhost:3000/stripe/changecard', {
+						token: token.id,
+						email: token.email,
+						id: self.profile.id,
+						cardId: self.profile.cardId,
+						stripeId: self.profile.stripeId
+					}).then((result) => {
+						const res = JSON.parse(result.body)
+						self.setCard(res)
+					}).catch((err) => {
+						console.log(err)
+					})
+				}
+			})
+			handler.open({
+				name: 'Matara',
+				description: 'Change card for subscription',
+				zipCode: true,
+				panelLabel: 'Change Card',
+				email: self.profile.stripeEmail
+			})
+		}
+	},
+
+	ready () {
+		this.$nextTick(() => {
+			componentHandler.upgradeDom()
+			componentHandler.upgradeAllRegistered()
+		})
+	}
 }
 </script>

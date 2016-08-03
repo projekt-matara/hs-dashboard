@@ -25,7 +25,6 @@ export default {
 					}).then((result) => {
 						// you should be getting a nice clean json with the information to update the Store
 						const res = JSON.parse(result.body)
-						console.log(res.body)
 						const x = {
 							cardId: res.body.user_metadata.card_id,
 							stripeStatus: res.body.user_metadata.stripe_status,

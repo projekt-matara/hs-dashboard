@@ -67,6 +67,16 @@ const mutations = {
 
 	UDPATE_CARDID (state, cardId) {
 		state.cardId = cardId
+	},
+
+	SET_CARD (state, card) {
+		state.stripeCountry = card.stripeCountry
+		state.stripeDigits = card.stripeDigits
+		state.stripeBrand = card.stripeBrand
+		state.stripeExp = card.stripeExp
+		state.stripeExpMonth = card.stripeExpMonth
+		state.stripeExpYear = card.stripeExpYear
+		state.cardId = card.cardId
 	}
 }
 
