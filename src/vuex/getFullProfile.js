@@ -6,6 +6,7 @@ export function getFullProfile (state) {
 		id: state.id,
 		cardId: state.cardId,
 		stripeStatus: state.stripeStatus,
+		paySetup: state.paySetup,
 		stripeEmail: state.stripeEmail,
 		stripeCountry: state.stripeCountry,
 		stripeDigits: state.stripeDigits,

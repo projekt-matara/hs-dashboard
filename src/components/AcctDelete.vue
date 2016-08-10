@@ -14,18 +14,25 @@ Purpose: Allow the user to delete their account
 		| and deactivate the downloaded Halfstak app. 
 		| Make absolutely sure you want to do this before proceeding as this cannot be revoked. 
 	.mdl-card__actions.mdl-card--border
-			a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") Delete My Account
+			a(
+			@click="delAcct",
+			class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") Delete My Account
 </template>
 
 <script>
-import Store from '../vuex/Store'
+// import {router} from '../main.js'
 
 export default {
-	store: Store,
-
 	props: [
-		'id'
-	]
+		'id',
+		'stripeId'
+	],
+
+	methods: {
+		delAcct () {
+			console.log('delete account')
+		}
+	}
 }
 </script>
 

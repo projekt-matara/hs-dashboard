@@ -35,6 +35,7 @@ export default {
             stripeId: data.stripeId,
             cardId: data.cardId,
             stripeStatus: data.stripeStatus,
+            paySetup: data.paySetup,
             stripeEmail: data.stripeEmail,
             stripeCountry: data.stripeCountry,
             stripeDigits: data.stripeDigits,

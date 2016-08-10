@@ -34,9 +34,6 @@
 
 <script>
 export default {
-	components: {
-	},
-
 	props: [
 		'email',
 		'id',
@@ -45,15 +42,13 @@ export default {
 
 	computed: {
 		status () {
-			if (this.stripeStatus === true) {
-				return 'Active: $6.95 per month'
-			} else {
-				return 'Inactive'
+			switch (this.stripeStatus) {
+				case true:
+					return 'Active: $6.95 per month.'
+				default:
+					return 'Inactive'
 			}
 		}
-	},
-
-	methods: {
 	}
 }
 </script>

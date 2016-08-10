@@ -21,7 +21,9 @@
 					span Subscription
 					span.mdl-list__item-text-body {{status}}
 	.mdl-card__actions.mdl-card--border
-		a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card") Cancel Subscription
+		a(
+		class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect change_card"
+		v-link="{name: 'cancel-sub'}") Cancel Subscription
 </template>
 
 <script>
@@ -35,9 +37,6 @@ export default {
 		'stripeEmail',
 		'stripeStatus'
 	],
-
-	ready () {
-	},
 
 	computed: {
 		status () {

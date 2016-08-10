@@ -2,7 +2,7 @@
 Topbar(title="Payment")
 Navbar
 main.mdl-layout__content.mdl-color--grey-100
-	div(v-if="profile.stripeStatus")
+	div(v-if="profile.stripeStatus == true")
 		.mdl-grid.demo-content
 			.mdl-cell--12-col
 				Pay-Details(:stripe-email="profile.stripeEmail", :stripe-status="profile.stripeStatus")
@@ -12,8 +12,7 @@ main.mdl-layout__content.mdl-color--grey-100
 					:stripe-country="profile.stripeCountry",
 					:stripe-digits="profile.stripeDigits",
 					:stripe-brand="profile.stripeBrand",
-					:stripe-exp="profile.stripeExp"
-			)
+					:stripe-exp="profile.stripeExp")
 	div(v-else)
 		.mdl-grid.demo-content
 			.mdl-cell--12-col

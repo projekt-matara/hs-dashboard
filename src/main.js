@@ -11,6 +11,7 @@ import EditEmail from './components/EditEmail'
 import EditPayEmail from './components/EditPayEmail'
 import ChangePassword from './components/ChangePassword'
 import ChangeCard from './components/ChangeCard'
+import CancelSub from './components/CancelSub'
 import PluginDirectory from './components/PluginDirectory_P'
 import Store from './vuex/Store'
 import auth from './auth/auth'
@@ -109,6 +110,11 @@ router.map({
 	'/changecard': {
 		component: ChangeCard,
 		name: 'change-card'
+	},
+
+	'/cancelsub': {
+		component: CancelSub,
+		name: 'cancel-sub'
 	},
 
 	'*': {
