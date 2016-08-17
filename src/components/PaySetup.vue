@@ -3,13 +3,16 @@
 		.mdl-card__title.mdl-card--expand
 			h4 Setup Payment Method and Subscription
 		.mdl-card__actions.mdl-card--border
-			a(class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect setup_pay", @click="openStripe") Subscribe
+			a(
+			class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect setup_pay", 
+			@click="openStripe") Subscribe
 			i.material-icons credit_card
 </template>
 
 <script>
 import Store from '../vuex/Store'
 import {setCustomer} from '../vuex/setCustomer'
+import {setLoadState} from '../vuex/setLoadState'
 
 export default {
 	methods: {
@@ -18,6 +21,7 @@ export default {
 			const handler = StripeCheckout.configure({
 				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
 				token: (token) => {
+					self.loading = true
 					self.$http.post('http://localhost:3000/stripe/create', {
 						token: token.id,
 						email: token.email,
@@ -54,7 +58,8 @@ export default {
 
 	vuex: {
 		actions: {
-			setCustomer
+			setCustomer,
+			setLoadState
 		}
 	},
 

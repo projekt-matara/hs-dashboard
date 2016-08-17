@@ -2,18 +2,36 @@
 Topbar(title="Edit Payment Email")
 Navbar
 main.mdl-layout__content.mdl-color--grey-100
-	.mdl-grid
-	.mdl-cell--12-col
-		#edit_email.demo-card-event.mdl-card.mdl-shadow--2dp
-			.mdl-card__title.mdl-card--expand
-				h2.mdl-card__title-text Enter new payment email
-			.mdl-card__supporting-text
-				form(@submit.prevent="onSubmit()", @submit="editPayEmail()")
-					.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-						input(class="mdl-textfield__input", type="text", name="email", v-model="payEmail")
-						label(class="mdl-textfield__label", for="email") New payment email
-					.mdl-card__actions
-						input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Change Email")
+	div(v-show="!loadState")
+		.mdl-grid
+		.mdl-cell--12-col
+			#edit_email.demo-card-event.mdl-card.mdl-shadow--2dp
+				.mdl-card__title.mdl-card--expand
+					h2.mdl-card__title-text Enter new payment email
+				.mdl-card__supporting-text
+					form(
+					@submit.prevent="onSubmit()", 
+					@submit="editPayEmail()")
+						.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							input(
+							class="mdl-textfield__input", 
+							type="text", 
+							name="email", 
+							v-model="payEmail")
+							label(
+							class="mdl-textfield__label", 
+							for="email") New payment email
+						.mdl-card__actions
+							input(
+							type="submit" 
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+							value="Change Email")
+	div(v-else)
+		.mdl-grid.demo-content
+			.mdl-cell--12-col
+				div(
+				id="p1",
+				class="mdl-spinner mdl-js-spinner is-active")
 </template>
 
 <script>
@@ -22,6 +40,8 @@ import {getPayEmail} from '../vuex/getPayEmail'
 import {userId} from '../vuex/userId'
 import {userStripeId} from '../vuex/userStripeId'
 import {updatePaymentEmail} from '../vuex/updatePaymentEmail'
+import {getLoadState} from '../vuex/getLoadState'
+import {setLoadState} from '../vuex/setLoadState'
 import {router} from '../main'
 import Topbar from './Topbar'
 import Navbar from './Navbar'
@@ -39,10 +59,12 @@ export default {
 		getters: {
 			getPayEmail,
 			userId,
-			userStripeId
+			userStripeId,
+			loadState: getLoadState
 		},
 		actions: {
-			updatePaymentEmail
+			updatePaymentEmail,
+			setLoadState
 		}
 	},
 
@@ -63,6 +85,7 @@ export default {
 	},
 
 	ready () {
+		this.setLoadState(false)
 		this.$nextTick(() => {
 			componentHandler.upgradeDom()
 			componentHandler.upgradeAllRegistered()
@@ -74,6 +97,7 @@ export default {
 			const newEmail = this.payEmail
 			const userId = this.userId
 			const stripeId = this.userStripeId
+			this.setLoadState(true)
 			this.$http.put('http://localhost:3000/stripe/editpayemail', {
 				newEmail,
 				userId,
@@ -81,6 +105,7 @@ export default {
 			})
 			.then((response) => {
 				this.updatePaymentEmail(JSON.parse(response.body).newPayEmail)
+				this.setLoadState(false)
 				router.go('payment')
 			})
 			.catch((err) => {

@@ -15,24 +15,17 @@ Purpose: Allow the user to delete their account
 		| Make absolutely sure you want to do this before proceeding as this cannot be revoked. 
 	.mdl-card__actions.mdl-card--border
 			a(
-			@click="delAcct",
+			v-link="{name: 'kill-account'}",
 			class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") Delete My Account
 </template>
 
 <script>
-// import {router} from '../main.js'
-
 export default {
 	props: [
-		'id',
-		'stripeId'
-	],
-
-	methods: {
-		delAcct () {
-			console.log('delete account')
-		}
-	}
+		'userId',
+		'stripeId',
+		'stripeStatus'
+	]
 }
 </script>
 

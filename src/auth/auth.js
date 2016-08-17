@@ -23,6 +23,7 @@ export default {
     }, (err, profile) => {
       if (err) {
         context.error = err
+        context.isError = true
       } else {
         localStorage.setItem('idToken', profile.idToken)
         context.$http.get('http://localhost:3000/user/' + profile.idTokenPayload.sub)
@@ -45,6 +46,7 @@ export default {
             stripeExpYear: data.stripeExpYear
           })
           self.user.authenticated = true
+          context.isError = false
           if (redirect) {
             router.go(redirect)
           }
@@ -64,17 +66,23 @@ export default {
       password: creds.password
     })
     .then((response) => {
-      localStorage.setItem('idToken', response.data.id_token)
-      context.setProfile({
-        email: creds.email,
-        username: creds.username,
-        id: response.data.id,
-        stripeId: '',
-        cardId: ''
-      })
-      self.user.authenticated = true
-      if (redirect) {
-        router.go(redirect)
+      console.log(response)
+      if (JSON.parse(response.body).id_token) {
+        localStorage.setItem('idToken', response.data.id_token)
+        context.setProfile({
+          email: creds.email,
+          username: creds.username,
+          id: response.data.id,
+          stripeId: '',
+          cardId: ''
+        })
+        self.user.authenticated = true
+        if (redirect) {
+          router.go(redirect)
+        }
+      } else {
+        context.error = 'This username or email has already been taken. Please try another.'
+        context.isError = true
       }
     })
     .catch((err) => {

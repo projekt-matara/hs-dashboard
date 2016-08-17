@@ -3,7 +3,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 		header.demo-drawer-header
 			img(src="http://s3.amazonaws.com/hs.web/images/user.jpg", class="demo-avatar")
 			.demo-avatar-dropdown
-				span {{userEmail}}
+				span {{getUsername}}
 				.mdl-layout-spacer
 				button(id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon")
 					i(class="material-icons", role="presentation") arrow_drop_down
@@ -34,7 +34,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 
 <script>
 import Store from '../vuex/Store'
-import {userEmail} from '../vuex/userEmail'
+import {getUsername} from '../vuex/getUsername'
 import auth from '../auth/auth'
 
 export default {
@@ -42,7 +42,7 @@ export default {
 
 	vuex: {
 		getters: {
-			userEmail
+			getUsername
 		}
 	},
 

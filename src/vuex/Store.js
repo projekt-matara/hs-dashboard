@@ -16,7 +16,8 @@ let state = {
 	stripeBrand: '',
 	stripeExp: '',
 	stripeExpMonth: '',
-	stripeExpYear: ''
+	stripeExpYear: '',
+	loading: false
 }
 
 const mutations = {
@@ -34,6 +35,22 @@ const mutations = {
 		state.stripeExp = user.stripeExp
 		state.stripeExpMonth = user.stripeExpMonth
 		state.stripeExpYear = user.stripeExpYear
+	},
+
+	CLEAR_PROFILE (state, user) {
+		state.email = ''
+		state.username = ''
+		state.stripeId = ''
+		state.id = ''
+		state.cardId = ''
+		state.stripeStatus = false
+		state.stripeEmail = ''
+		state.stripeCountry = ''
+		state.stripeDigits = ''
+		state.stripeBrand = ''
+		state.stripeExp = ''
+		state.stripeExpMonth = ''
+		state.stripeExpYear = ''
 	},
 
 	SET_CUSTOMER (state, cus) {
@@ -77,6 +94,14 @@ const mutations = {
 		state.stripeExpMonth = card.stripeExpMonth
 		state.stripeExpYear = card.stripeExpYear
 		state.cardId = card.cardId
+	},
+
+	SET_LOAD_STATE (state, newState) {
+		if (typeof newState === 'boolean') {
+			state.loading = newState
+		} else {
+			state.loading = false
+		}
 	}
 }
 

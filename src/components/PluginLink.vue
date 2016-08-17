@@ -4,19 +4,30 @@
 		.mdl-card__title
 			.mdl-card__title-text {{name}}
 		.mdl-card__media
-			a(v-bind:href="link")
-				img(v-bind:src="image", alt="image")
+			a(
+			class="pluginLink"
+			v-bind:href="link", 
+			target="_blank")
+				img(
+				v-bind:src="image", 
+				alt="image")
 		.mdl-card__supporting-text
 			{{description}}
 </template>
 
 <script>
+import blankshield from 'blankshield'
+import $ from 'jquery'
 export default {
 	props: [
 		'name',
 		'link',
 		'image',
 		'description'
-	]
+	],
+
+	ready () {
+		blankshield($('a[target="_blank"]'))
+	}
 }
 </script>

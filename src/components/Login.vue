@@ -15,6 +15,12 @@
 						label(class="mdl-textfield__label" for="password") Password
 					.mdl-card__actions
 						input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Login")
+		div(v-if="isError")
+			.mdl-card.mdl-shadow--2dp.error-message#error-login
+				.mdl-card__title.mdl-card--expand
+					h1.mdl-card__title-text Error
+				.mdl-card__supporting-text
+					p {{error}}
 		p Don't have an account? 
 		.alt-link
 			a(v-link="{name:'signup'}") Sign up here!
@@ -33,7 +39,8 @@ export default{
         username: '',
         password: ''
       },
-      error: ''
+      error: '',
+      isError: false
     }
 	},
 

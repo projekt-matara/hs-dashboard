@@ -13,6 +13,7 @@ import ChangePassword from './components/ChangePassword'
 import ChangeCard from './components/ChangeCard'
 import CancelSub from './components/CancelSub'
 import PluginDirectory from './components/PluginDirectory_P'
+import KillAccount from './components/KillAccount'
 import Store from './vuex/Store'
 import auth from './auth/auth'
 
@@ -115,6 +116,11 @@ router.map({
 	'/cancelsub': {
 		component: CancelSub,
 		name: 'cancel-sub'
+	},
+
+	'/killaccount': {
+		component: KillAccount,
+		name: 'kill-account'
 	},
 
 	'*': {

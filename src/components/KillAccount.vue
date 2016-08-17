@@ -1,19 +1,19 @@
 <template lang="jade">
-Topbar(title="Cancel Subscription")
+Topbar(title="Delete Account")
 Navbar
 main.mdl-layout__content.mdl-color--grey-100
 	div(v-show="!loadState")
 		.mdl-grid
 		.mdl-cell--12-col
-			#edit_email.demo-card-event.mdl-card.mdl-shadow--2dp
+			#kill_account.demo-card-event.mdl-card.mdl-shadow--2dp
 				.mdl-card__title.mdl-card--expand
-					h2.mdl-card__title-text Cancel Subscription
+					h2.mdl-card__title-text Delete Account
 				.mdl-card__supporting-text
-					p This will cancel your payments, delete your card, and deactivate your access to the Halfstak app. However you will still be able to access your account any time that you need to. 
+					p Are you sure you wish to delete your account? Remember this action cannot be undone. 
 				.mdl-card__actions
 					button(
-					@click="cancelSub()"
-					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") Cancel Subscription
+					@click="delAcct()"
+					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect") Delete Account
 	div(v-else)
 		.mdl-grid.demo-content
 			.mdl-cell--12-col
@@ -25,8 +25,6 @@ main.mdl-layout__content.mdl-color--grey-100
 <script>
 import Store from '../vuex/Store'
 import {getFullProfile} from '../vuex/getFullProfile'
-import {setCustomer} from '../vuex/setCustomer'
-import {router} from '../main.js'
 import Topbar from './Topbar'
 import Navbar from './Navbar'
 import auth from '../auth/auth'
@@ -47,7 +45,6 @@ export default {
 			loadState: getLoadState
 		},
 		actions: {
-			setCustomer,
 			setLoadState
 		}
 	},
@@ -71,29 +68,15 @@ export default {
 	},
 
 	methods: {
-		cancelSub () {
+		delAcct () {
 			const self = this
-			this.setLoadState(true)
-			self.$http.put('http://localhost:3000/stripe/cancelsubscription', {
-				stripeId: self.profile.stripeId,
-				userId: self.profile.id
+			self.$http.put('http://localhost:3000/user/delete', {
+				stripeId: self.stripeId,
+				userId: self.userId,
+				stripeStatus: self.stripeStatus
 			})
 			.then((response) => {
-				const profile = {
-					stripeId: '',
-					cardId: '',
-					stripeStatus: false,
-					stripeEmail: '',
-					stripeCountry: '',
-					stripeDigits: '',
-					stripeBrand: '',
-					stripeExp: '',
-					stripeExpMonth: '',
-					stripeExpYear: ''
-				}
-				this.setCustomer(profile)
-				this.setLoadState(false)
-				router.go('payment')
+				auth.logout()
 			})
 			.catch((err) => {
 				console.log(err)
