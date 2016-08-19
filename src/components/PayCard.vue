@@ -81,7 +81,8 @@ export default {
 				description: 'Change card for subscription',
 				zipCode: true,
 				panelLabel: 'Change Card',
-				email: self.profile.stripeEmail
+				email: self.profile.stripeEmail,
+				allowRememberMe: false
 			})
 		}
 	},
