@@ -10,10 +10,7 @@ main.mdl-layout__content.mdl-color--grey-100
 				:id="profile.id", 
 				:stripe-status="profile.stripeStatus")
 			.mdl-cell--6-col.nudge
-				acct-delete(
-				:user-id="profile.id", 
-				:stripe-id="profile.stripeId", 
-				:stripe-status="profile.stripeStatus")
+				acct-delete
 	div(v-else)
 		.mdl-grid.demo-content
 			.mdl-cell--12-col

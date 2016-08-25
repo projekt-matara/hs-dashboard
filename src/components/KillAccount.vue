@@ -72,9 +72,9 @@ export default {
 			const self = this
 			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
 			self.$http.put('http://localhost:3000/delete_user', {
-				stripeId: self.stripeId,
-				userId: self.userId,
-				stripeStatus: self.stripeStatus
+				stripeId: self.profile.stripeId,
+				userId: self.profile.id,
+				stripeStatus: self.profile.stripeStatus
 			}, {
 				headers: jwtHeader
 			})

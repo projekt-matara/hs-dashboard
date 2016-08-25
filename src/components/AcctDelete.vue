@@ -21,11 +21,6 @@ Purpose: Allow the user to delete their account
 
 <script>
 export default {
-	props: [
-		'userId',
-		'stripeId',
-		'stripeStatus'
-	]
 }
 </script>
 
