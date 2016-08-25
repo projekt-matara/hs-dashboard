@@ -22,11 +22,12 @@ export default {
 				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
 				token: (token) => {
 					self.loading = true
-					self.$http.post('http://localhost:3000/stripe/create', {
+					const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
+					self.$http.post('http://localhost:3000/stripe/create_customer', {
 						token: token.id,
 						email: token.email,
 						id: self.id
-					}).then((result) => {
+					}, {headers: jwtHeader}).then((result) => {
 						// you should be getting a nice clean json with the information to update the Store
 						const res = JSON.parse(result.body)
 						const x = {

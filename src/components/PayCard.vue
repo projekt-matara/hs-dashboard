@@ -27,15 +27,10 @@
 </template>
 
 <script>
-import ChangeCard from './ChangeCard'
 import Store from '../vuex/Store'
 import {getFullProfile} from '../vuex/getFullProfile'
 import {setCard} from '../vuex/setCard'
 export default {
-	components: {
-		ChangeCard
-	},
-
 	store: Store,
 
 	vuex: {
@@ -62,13 +57,14 @@ export default {
 			const handler = StripeCheckout.configure({
 				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
 				token: (token) => {
+					const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
 					self.$http.put('http://localhost:3000/stripe/changecard', {
 						token: token.id,
 						email: token.email,
 						id: self.profile.id,
 						cardId: self.profile.cardId,
 						stripeId: self.profile.stripeId
-					}).then((result) => {
+					}, {headers: jwtHeader}).then((result) => {
 						const res = JSON.parse(result.body)
 						self.setCard(res)
 					}).catch((err) => {

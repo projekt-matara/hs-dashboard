@@ -98,11 +98,12 @@ export default {
 			const userId = this.userId
 			const stripeId = this.userStripeId
 			this.setLoadState(true)
+			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
 			this.$http.put('http://localhost:3000/stripe/editpayemail', {
 				newEmail,
 				userId,
 				stripeId
-			})
+			}, jwtHeader)
 			.then((response) => {
 				this.updatePaymentEmail(JSON.parse(response.body).newPayEmail)
 				this.setLoadState(false)

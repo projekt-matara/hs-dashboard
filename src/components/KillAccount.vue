@@ -70,10 +70,13 @@ export default {
 	methods: {
 		delAcct () {
 			const self = this
-			self.$http.put('http://localhost:3000/user/delete', {
+			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
+			self.$http.put('http://localhost:3000/delete_user', {
 				stripeId: self.stripeId,
 				userId: self.userId,
 				stripeStatus: self.stripeStatus
+			}, {
+				headers: jwtHeader
 			})
 			.then((response) => {
 				auth.logout()

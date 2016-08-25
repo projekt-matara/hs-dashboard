@@ -103,13 +103,13 @@ export default {
 			const newEmail = this.newEmail
 			const id = this.userId
 			this.setLoadState(true)
-			this.$http.put('http://localhost:3000/user/email', {
+			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
+			this.$http.put('http://localhost:3000/edit_email', {
 				newEmail: newEmail,
 				userId: id
-			})
+			}, {headers: jwtHeader})
 			.then((response) => {
 				const data = JSON.parse(response.body)
-				console.log(data)
 				if (data.error) {
 					this.isError = true
 					this.error = data.message

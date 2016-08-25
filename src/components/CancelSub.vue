@@ -73,11 +73,12 @@ export default {
 	methods: {
 		cancelSub () {
 			const self = this
+			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
 			this.setLoadState(true)
 			self.$http.put('http://localhost:3000/stripe/cancelsubscription', {
 				stripeId: self.profile.stripeId,
 				userId: self.profile.id
-			})
+			}, {headers: jwtHeader})
 			.then((response) => {
 				const profile = {
 					stripeId: '',

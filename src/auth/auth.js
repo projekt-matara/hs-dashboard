@@ -26,7 +26,10 @@ export default {
         context.isError = true
       } else {
         localStorage.setItem('idToken', profile.idToken)
-        context.$http.get('http://localhost:3000/user/' + profile.idTokenPayload.sub)
+        const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
+        context.$http.get('http://localhost:3000/user/' + profile.idTokenPayload.sub, {
+          headers: jwtHeader
+        })
         .then((response) => {
           const data = response.data
           context.setProfile({
@@ -66,7 +69,6 @@ export default {
       password: creds.password
     })
     .then((response) => {
-      console.log(response)
       if (JSON.parse(response.body).id_token) {
         localStorage.setItem('idToken', response.data.id_token)
         context.setProfile({
