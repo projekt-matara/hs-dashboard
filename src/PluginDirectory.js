@@ -175,7 +175,7 @@ export function PluginDirectory () {
 					name: 'TSE808',
 					image: 'http://hs.web.s3.amazonaws.com/images/plugin_list/tse808.png',
 					link: 'http://www.tseaudio.com/software/tse808',
-					description: 'The legendary TSE808, modeled off of a famous overdrive pedal this thing delivers. I use it all the time and wholeheartedly recommend it.'
+					description: 'The legendary TSE808, is modeled off of a famous overdrive pedal. It is widely used and we wholeheartedly recommend it.'
 				},
 				{
 					// TS999

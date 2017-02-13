@@ -21,6 +21,7 @@
 					h1.mdl-card__title-text Error
 				.mdl-card__supporting-text
 					p {{error}}
+					a(href="#", v-link="{name: 'forgot-password'}") Forgot password? Click here!
 		p Don't have an account? 
 		.alt-link
 			a(v-link="{name:'signup'}") Sign up here!

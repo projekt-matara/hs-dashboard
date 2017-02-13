@@ -13,6 +13,7 @@ import ChangePassword from './components/ChangePassword'
 import CancelSub from './components/CancelSub'
 import PluginDirectory from './components/PluginDirectory_P'
 import KillAccount from './components/KillAccount'
+import ForgotPassword from './components/ForgotPassword'
 import Store from './vuex/Store'
 import auth from './auth/auth'
 
@@ -26,32 +27,6 @@ const App = Vue.extend({
 	data () {
 		return {
 			authenticated: false
-		}
-	},
-
-	methods: {
-		login (msg, e) {
-			e.stopPropagation()
-			const self = this
-			const lock = new Auth0Lock('LXrECoaQZHEP9TAe8ceisjDd0q49uDDI', 'halfstak.auth0.com')
-
-			lock.show((err, profile, token) => {
-				if (err) {
-					// Handle the error
-					console.log(err)
-				} else {
-					// Set the token and user profile in local storage
-					localStorage.setItem('profile', JSON.stringify(profile))
-					localStorage.setItem('id_token', token)
-					self.authenticated = true
-				}
-			})
-		},
-
-		logout () {
-			localStorage.removeItem('id_token')
-			localStorage.removeItem('profile')
-			this.authenticated = false
 		}
 	}
 })
@@ -115,6 +90,11 @@ router.map({
 	'/killaccount': {
 		component: KillAccount,
 		name: 'kill-account'
+	},
+
+	'/forgotpassword': {
+		component: ForgotPassword,
+		name: 'forgot-password'
 	},
 
 	'*': {

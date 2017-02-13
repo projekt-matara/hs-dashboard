@@ -25,6 +25,7 @@ export default {
         context.error = err
         context.isError = true
       } else {
+        console.log(profile)
         localStorage.setItem('idToken', profile.idToken)
         const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
         context.$http.get('http://localhost:3000/user/' + profile.idTokenPayload.sub, {
