@@ -39,14 +39,18 @@ export default {
       email: creds.email,
       password: creds.password
     })
-    .then((profile) => {
-      const data = profile.data
-      localStorage.setItem('idToken', data.idToken)
-      setProfileContext(context, data)
-      self.user.authenticated = true
-      context.isError = false
-      if (redirect) {
-        router.go(redirect)
+    .then((response) => {
+      if (response.data.error) {
+        throw new Error(response.data.error)
+      } else {
+        const data = response.data
+        localStorage.setItem('idToken', data.idToken)
+        setProfileContext(context, data)
+        self.user.authenticated = true
+        context.isError = false
+        if (redirect) {
+          router.go(redirect)
+        }
       }
     })
     .catch((err) => {
