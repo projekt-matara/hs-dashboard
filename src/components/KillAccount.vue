@@ -79,7 +79,7 @@ export default {
 				headers: jwtHeader
 			})
 			.then((response) => {
-				auth.logout()
+				auth.logout(self)
 			})
 			.catch((err) => {
 				console.log(err)

@@ -23,7 +23,9 @@ export default {
 				token: (token) => {
 					self.loading = true
 					const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
-					self.$http.post('http://localhost:3000/stripe/create_customer', {
+					const restUrl = 'http://localhost:3000/stripe/create_customer/' + self.id
+					console.log(restUrl)
+					self.$http.post(restUrl, {
 						token: token.id,
 						email: token.email,
 						id: self.id

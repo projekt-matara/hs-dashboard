@@ -16,6 +16,9 @@
           .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
             input(class="mdl-textfield__input" type="password", name="password", v-model="credentials.password")
             label(class="mdl-textfield__label" for="password") Password
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            input(class="mdl-textfield__input" type="password", name="confirmPassword", v-model="credentials.confirmPassword")
+            label(class="mdl-textfield__label" for="password") Confirm Password
           .mdl-card__actions
             input(type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Sign Up")
     div(v-if="isError")
@@ -42,7 +45,8 @@ export default{
       credentials: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       },
       error: '',
       isError: false
@@ -59,14 +63,19 @@ export default{
 
 	methods: {
     submit () {
-      var credentials = {
-        username: this.credentials.username,
-        email: this.credentials.email,
-        password: this.credentials.password
+      if (this.credentials.password === this.credentials.confirmPassword) {
+        let credentials = {
+          username: this.credentials.username,
+          email: this.credentials.email,
+          password: this.credentials.password
+        }
+        // We need to pass the component's this context
+        // to properly make use of http in the auth service
+        auth.signup(this, credentials, 'home')
+      } else {
+        this.isError = true
+        this.error = 'Yikes! The passwords did not match. Please re-enter them and try again.'
       }
-      // We need to pass the component's this context
-      // to properly make use of http in the auth service
-      auth.signup(this, credentials, 'home')
     }
   },
 

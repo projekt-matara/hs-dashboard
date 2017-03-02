@@ -8,8 +8,8 @@
 			.mdl-card__supporting-text
 				form(@submit.prevent="onSubmit()", @submit="submit()")
 					.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-						input(class="mdl-textfield__input", type="text", name="email", v-model="credentials.username")
-						label(class="mdl-textfield__label", for="email") Email/Username
+						input(class="mdl-textfield__input", type="text", name="email", v-model="credentials.email")
+						label(class="mdl-textfield__label", for="email") Email
 					.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 						input(class="mdl-textfield__input" type="password", name="password", v-model="credentials.password")
 						label(class="mdl-textfield__label" for="password") Password
@@ -37,7 +37,7 @@ export default{
 			// We need to initialize the component with any
       // properties that will be used in it
       credentials: {
-        username: '',
+        email: '',
         password: ''
       },
       error: '',
@@ -56,7 +56,7 @@ export default{
 	methods: {
     submit () {
       var credentials = {
-        username: this.credentials.username,
+        email: this.credentials.email,
         password: this.credentials.password
       }
       // We need to pass the component's this context

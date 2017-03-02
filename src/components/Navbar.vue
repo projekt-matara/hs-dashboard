@@ -35,6 +35,7 @@ div(class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-tex
 <script>
 import Store from '../vuex/Store'
 import {getUsername} from '../vuex/getUsername'
+import {clearProfile} from '../vuex/clearProfile'
 import auth from '../auth/auth'
 
 export default {
@@ -43,12 +44,16 @@ export default {
 	vuex: {
 		getters: {
 			getUsername
+		},
+		actions: {
+			clearProfile
 		}
 	},
 
 	methods: {
 		logout () {
-			auth.logout()
+			const self = this
+			auth.logout(self)
 		}
 	},
 
