@@ -111,9 +111,7 @@ export default {
 			.then((response) => {
 				const data = JSON.parse(response.body)
 				if (data.error) {
-					this.isError = true
-					this.error = data.message
-					this.setLoadState(false)
+					throw new Error(data.message)
 				} else {
 					this.updateEmail(JSON.parse(response.body).email)
 					this.setLoadState(false)
@@ -122,6 +120,9 @@ export default {
 			})
 			.catch((err) => {
 				console.log(err)
+				this.isError = true
+				this.error = err
+				this.setLoadState(false)
 			})
 		}
 	}
