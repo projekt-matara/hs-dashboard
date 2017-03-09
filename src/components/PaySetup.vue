@@ -21,30 +21,28 @@ export default {
 			const handler = StripeCheckout.configure({
 				key: 'pk_test_sGsIRcrMlwumzh9pYtBqRAtb',
 				token: (token) => {
-					self.loading = true
 					const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
-					const restUrl = 'http://localhost:3000/stripe/create_customer/' + self.id
-					console.log(restUrl)
-					self.$http.post(restUrl, {
+					const restUrl = 'http://localhost:3000/stripe/createcustomer'
+					self.$http.put(restUrl, {
 						token: token.id,
 						email: token.email,
 						id: self.id
-					}, {headers: jwtHeader}).then((result) => {
+					}, {headers: jwtHeader})
+					.then((result) => {
 						// you should be getting a nice clean json with the information to update the Store
-						const res = JSON.parse(result.body)
-						const x = {
-							cardId: res.body.user_metadata.card_id,
-							stripeStatus: res.body.user_metadata.stripe_status,
-							stripeEmail: res.body.user_metadata.stripe_email,
-							stripeCountry: res.body.user_metadata.stripe_country,
-							stripeDigits: res.body.user_metadata.stripe_digits,
-							stripeBrand: res.body.user_metadata.stripe_brand,
-							stripeExp: res.body.user_metadata.stripe_exp,
-							stripeExpMonth: res.body.user_metadata.stripe_exp_month,
-							stripeExpYear: res.body.user_metadata.stripe_exp_year,
-							stripeId: res.body.user_metadata.stripe_id
-						}
-						self.setCustomer(x)
+						const res = result.data
+						self.setCustomer({
+							cardId: res.cardId,
+							stripeStatus: res.stripeStatus,
+							stripeEmail: res.stripeEmail,
+							stripeCountry: res.stripeCountry,
+							stripeDigits: res.stripeDigits,
+							stripeBrand: res.stripeBrand,
+							stripeExp: res.stripeExp,
+							stripeExpMonth: res.stripeExpMonth,
+							stripeExpYear: res.stripeExpYear,
+							stripeId: res.stripeId
+						})
 					}).catch((err) => {
 						console.log(err)
 					})
@@ -53,7 +51,7 @@ export default {
 			handler.open({
 				name: 'Matara',
 				description: 'Subscription for Halfstak',
-				amount: 695,
+				amount: 700,
 				zipCode: true
 			})
 		}

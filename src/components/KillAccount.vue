@@ -71,7 +71,7 @@ export default {
 		delAcct () {
 			const self = this
 			const jwtHeader = {'Authorization': 'Bearer ' + localStorage.getItem('idToken')}
-			self.$http.put('http://localhost:3000/delete_user', {
+			self.$http.put('http://localhost:3000/deleteuser', {
 				stripeId: self.profile.stripeId,
 				userId: self.profile.id,
 				stripeStatus: self.profile.stripeStatus

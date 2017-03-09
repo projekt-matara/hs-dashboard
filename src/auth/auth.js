@@ -1,12 +1,4 @@
 import {router} from '../main.js'
-// import Auth0 from 'auth0-js'
-
-// const auth0 = new Auth0({
-//   domain: 'halfstak.auth0.com',
-//   clientID: 'LXrECoaQZHEP9TAe8ceisjDd0q49uDDI',
-//   callbackURL: 'http://localhost:8080',
-//   callbackOnLocationHash: true
-// })
 
 function setProfileContext (context, data) {
   context.setProfile({
