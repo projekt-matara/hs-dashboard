@@ -26,6 +26,12 @@ main.mdl-layout__content.mdl-color--grey-100
 							type="submit" 
 							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
 							value="Change Email")
+		div(v-if="isError")
+			.mdl-card.mdl-shadow--2dp.error-message#error-login
+				.mdl-card__title.mdl-card--expand
+					h1.mdl-card__title-text Error
+				.mdl-card__supporting-text
+					p {{error}}
 	div(v-else)
 		.mdl-grid.demo-content
 			.mdl-cell--12-col
@@ -80,7 +86,9 @@ export default {
 
 	data () {
 		return {
-			payEmail: this.getPayEmail
+			payEmail: this.getPayEmail,
+			isError: false,
+			error: ''
 		}
 	},
 
@@ -103,7 +111,7 @@ export default {
 				newEmail,
 				userId,
 				stripeId
-			}, jwtHeader)
+			}, {headers: jwtHeader})
 			.then((response) => {
 				this.updatePaymentEmail(JSON.parse(response.body).newPayEmail)
 				this.setLoadState(false)
@@ -111,6 +119,9 @@ export default {
 			})
 			.catch((err) => {
 				console.log(err)
+				this.isError = true
+				this.error = err
+				this.setLoadState(false)
 			})
 		}
 	}
