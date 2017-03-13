@@ -53,16 +53,17 @@ export default {
 
   signup (context, creds, redirect) {
     const self = this
-    context.$http.post('http://localhost:3000/user', {
+    context.$http.post('http://localhost:3000/createuser', {
       email: creds.email,
       username: creds.username,
       password: creds.password
     })
     .then((response) => {
       const data = response.data
-      if (data.error) {
-        this.isError = true
-        this.error = data.error
+      if (data.message === 'User validation failed.') {
+        console.log('data message thing worked')
+        // context.isError = true
+        // context.error = 'The username or email was invalid. Please try again.'
       } else {
         if (data.idToken) {
           localStorage.setItem('idToken', data.idToken)
@@ -70,6 +71,18 @@ export default {
           self.user.authenticated = true
           router.go(redirect)
         }
+      }
+    })
+    .catch((err) => {
+      console.log('now we are in data message business')
+      console.log(err)
+      const data = err.data
+      if (data.message === 'User validation failed') {
+        context.isError = true
+        context.error = 'The username or email is invalid. Please try again.'
+      } else {
+        context.isError = true
+        context.error = data.message
       }
     })
   },
