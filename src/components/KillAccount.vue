@@ -30,6 +30,8 @@ import Navbar from './Navbar'
 import auth from '../auth/auth'
 import {getLoadState} from '../vuex/getLoadState'
 import {setLoadState} from '../vuex/setLoadState'
+import {clearProfile} from '../vuex/clearProfile'
+// import {router} from '../main.js'
 
 export default {
 	store: Store,
@@ -45,7 +47,8 @@ export default {
 			loadState: getLoadState
 		},
 		actions: {
-			setLoadState
+			setLoadState,
+			clearProfile
 		}
 	},
 
@@ -79,7 +82,9 @@ export default {
 				headers: jwtHeader
 			})
 			.then((response) => {
-				auth.logout(self)
+				if (response.status === 200) {
+					auth.logout(this)
+				}
 			})
 			.catch((err) => {
 				console.log(err)

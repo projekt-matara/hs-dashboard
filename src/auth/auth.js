@@ -74,8 +74,6 @@ export default {
       }
     })
     .catch((err) => {
-      console.log('now we are in data message business')
-      console.log(err)
       const data = err.data
       if (data.message === 'User validation failed') {
         context.isError = true
