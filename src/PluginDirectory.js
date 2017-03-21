@@ -331,7 +331,7 @@ export function PluginDirectory () {
 					name: 'JST Ben Bruce',
 					image: 'http://hs.web.s3.amazonaws.com/images/plugin_list/jst_ben_bruce.png',
 					link: 'https://joeysturgistones.com/products/toneforge-ben-bruce',
-					description: 'uilt under the watchful eye of top metal produce Joey Sturgis, you have an amp plugin that is built around getting you to a good metal tone as fast and easily as possible.'
+					description: 'Built under the watchful eye of top metal produce Joey Sturgis, you have an amp plugin that is built around getting you to a good metal tone as fast and easily as possible.'
 				}
 			]
 		}
