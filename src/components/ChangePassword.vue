@@ -105,7 +105,7 @@ export default {
 				.$http
 				.put('http://localhost:3000/changepassword', payload, {headers: jwtHeader})
 				.then((response) => {
-					if (response.data.message === 'Password change successful.') {
+					if (response.data.data.message === 'Password change successful.') {
 						this.changeSuccess = true
 					} else {
 						throw new Error('Ah crap, there has been an error in changing your password. :-(')

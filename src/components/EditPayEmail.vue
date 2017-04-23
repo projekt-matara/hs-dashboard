@@ -113,15 +113,21 @@ export default {
 				stripeId
 			}, {headers: jwtHeader})
 			.then((response) => {
-				this.updatePaymentEmail(JSON.parse(response.body).newPayEmail)
+				this.updatePaymentEmail(response.data.data.newPayEmail)
 				this.setLoadState(false)
 				router.go('payment')
 			})
 			.catch((err) => {
-				console.log(err)
-				this.isError = true
-				this.error = err
-				this.setLoadState(false)
+				const errorMessage = err.data.data
+				if (errorMessage.includes('E11000 duplicate key error index:')) {
+					this.isError = true
+					this.error = 'Someone else is using the email. Please try another one.'
+					this.setLoadState(false)
+				} else {
+					this.isError = true
+					this.error = err.data.data
+					this.setLoadState(false)
+				}
 			})
 		}
 	}

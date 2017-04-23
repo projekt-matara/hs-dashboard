@@ -30,7 +30,7 @@ export default {
 					}, {headers: jwtHeader})
 					.then((result) => {
 						// you should be getting a nice clean json with the information to update the Store
-						const res = result.data
+						const res = result.data.data
 						self.setCustomer({
 							cardId: res.cardId,
 							stripeStatus: res.stripeStatus,

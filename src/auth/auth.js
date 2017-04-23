@@ -32,10 +32,11 @@ export default {
       password: creds.password
     })
     .then((response) => {
-      if (response.data.error) {
-        throw new Error(response.data.error)
+      console.log(response.data.data)
+      if (response.data.data.error) {
+        throw new Error(response.data.data.error)
       } else {
-        const data = response.data
+        const data = response.data.data
         localStorage.setItem('idToken', data.idToken)
         setProfileContext(context, data)
         self.user.authenticated = true
@@ -47,7 +48,7 @@ export default {
     })
     .catch((err) => {
       context.isError = true
-      context.error = err
+      context.error = err.data.data
     })
   },
 
@@ -59,11 +60,10 @@ export default {
       password: creds.password
     })
     .then((response) => {
-      const data = response.data
+      const data = response.data.data
       if (data.message === 'User validation failed.') {
-        console.log('data message thing worked')
-        // context.isError = true
-        // context.error = 'The username or email was invalid. Please try again.'
+        context.isError = true
+        context.error = 'The username or email was invalid. Please try again.'
       } else {
         if (data.idToken) {
           localStorage.setItem('idToken', data.idToken)
@@ -74,13 +74,13 @@ export default {
       }
     })
     .catch((err) => {
-      const data = err.data
-      if (data.message === 'User validation failed') {
+      const data = err.data.data
+      if (data === 'User validation failed') {
         context.isError = true
         context.error = 'The username or email is invalid. Please try again.'
       } else {
         context.isError = true
-        context.error = data.message
+        context.error = data
       }
     })
   },

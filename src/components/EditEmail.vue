@@ -109,20 +109,26 @@ export default {
 				userId: id
 			}, {headers: jwtHeader})
 			.then((response) => {
-				const data = JSON.parse(response.body)
+				const data = response.data.data
 				if (data.error) {
-					throw new Error(data.message)
+					throw new Error(data)
 				} else {
-					this.updateEmail(JSON.parse(response.body).email)
+					this.updateEmail(data.email)
 					this.setLoadState(false)
 					router.go('account')
 				}
 			})
 			.catch((err) => {
-				console.log(err)
-				this.isError = true
-				this.error = err
-				this.setLoadState(false)
+				const errorMessage = err.data.data
+				if (errorMessage.includes('E11000 duplicate key error index:')) {
+					this.isError = true
+					this.error = 'Someone else is using the email. Please try another one.'
+					this.setLoadState(false)
+				} else {
+					this.isError = true
+					this.error = err.data.data
+					this.setLoadState(false)
+				}
 			})
 		}
 	}

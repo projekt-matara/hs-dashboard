@@ -65,7 +65,7 @@ export default {
 						cardId: self.profile.cardId,
 						stripeId: self.profile.stripeId
 					}, {headers: jwtHeader}).then((result) => {
-						const res = JSON.parse(result.body)
+						const res = result.data.data
 						self.setCard(res)
 					}).catch((err) => {
 						console.log(err)
